@@ -107,41 +107,55 @@ export const api = {
       prevState: EncodedSavedState;
     },
     options?: ApiOptions,
-  ) => sse<ExecutionState>('GET', `alice?${new URLSearchParams(query)}`, options),
+  ) => sse<ExecutionState>('GET', `/beta/api/alice?${new URLSearchParams(query)}`, options),
   autosuggest: (
     params: {
       q: string;
     },
     options?: ApiOptions,
-  ) => requestJson<Suggestion[]>('POST', `autosuggest?${new URLSearchParams(params)}`, options),
+  ) =>
+    requestJson<Suggestion[]>(
+      'POST',
+      `/beta/api/autosuggest?${new URLSearchParams(params)}`,
+      options,
+    ),
   exploreExport: (body: ExploreExportOpticParams, options?: ApiOptions) =>
-    requestPlain('POST', `explore/export`, body, options),
+    requestPlain('POST', `/beta/api/explore/export`, body, options),
   factCheck: (body: FactCheckParams, options?: ApiOptions) =>
-    requestJson<FactCheckResponse>('POST', `fact_check`, body, options),
+    requestJson<FactCheckResponse>('POST', `/beta/api/fact_check`, body, options),
   search: (body: ApiSearchQuery, options?: ApiOptions) =>
-    requestJson<ApiSearchResult>('POST', `search`, body, options),
+    requestJson<ApiSearchResult>('POST', `/beta/api/search`, body, options),
   sitesExport: (body: SitesExportOpticParams, options?: ApiOptions) =>
-    requestPlain('POST', `sites/export`, body, options),
+    requestPlain('POST', `/beta/api/sites/export`, body, options),
   summarize: (
     query: {
       query: string;
       url: string;
     },
     options?: ApiOptions,
-  ) => sse<string>('GET', `summarize?${new URLSearchParams(query)}`, options),
+  ) => sse<string>('GET', `/beta/api/summarize?${new URLSearchParams(query)}`, options),
   webgraphHostIngoing: (
     query: {
       site: string;
     },
     options?: ApiOptions,
   ) =>
-    requestJson<FullEdge[]>('POST', `webgraph/host/ingoing?${new URLSearchParams(query)}`, options),
+    requestJson<FullEdge[]>(
+      'POST',
+      `/beta/api/webgraph/host/ingoing?${new URLSearchParams(query)}`,
+      options,
+    ),
   webgraphHostKnows: (
     query: {
       site: string;
     },
     options?: ApiOptions,
-  ) => requestJson<KnowsSite>('POST', `webgraph/host/knows?${new URLSearchParams(query)}`, options),
+  ) =>
+    requestJson<KnowsSite>(
+      'POST',
+      `/beta/api/webgraph/host/knows?${new URLSearchParams(query)}`,
+      options,
+    ),
   webgraphHostOutgoing: (
     query: {
       site: string;
@@ -150,18 +164,22 @@ export const api = {
   ) =>
     requestJson<FullEdge[]>(
       'POST',
-      `webgraph/host/outgoing?${new URLSearchParams(query)}`,
+      `/beta/api/webgraph/host/outgoing?${new URLSearchParams(query)}`,
       options,
     ),
   webgraphHostSimilar: (body: SimilarSitesParams, options?: ApiOptions) =>
-    requestJson<ScoredSite[]>('POST', `webgraph/host/similar`, body, options),
+    requestJson<ScoredSite[]>('POST', `/beta/api/webgraph/host/similar`, body, options),
   webgraphPageIngoing: (
     query: {
       page: string;
     },
     options?: ApiOptions,
   ) =>
-    requestJson<FullEdge[]>('POST', `webgraph/page/ingoing?${new URLSearchParams(query)}`, options),
+    requestJson<FullEdge[]>(
+      'POST',
+      `/beta/api/webgraph/page/ingoing?${new URLSearchParams(query)}`,
+      options,
+    ),
   webgraphPageOutgoing: (
     query: {
       page: string;
@@ -170,7 +188,7 @@ export const api = {
   ) =>
     requestJson<FullEdge[]>(
       'POST',
-      `webgraph/page/outgoing?${new URLSearchParams(query)}`,
+      `/beta/api/webgraph/page/outgoing?${new URLSearchParams(query)}`,
       options,
     ),
 };
