@@ -24,7 +24,10 @@ export const requestPlain = (
     method: method.toUpperCase(),
     body: typeof body != 'undefined' ? JSON.stringify(body) : void 0,
     signal: controller.signal,
-    headers: options?.headers,
+    headers: {
+      ...options?.headers,
+      ...(typeof body != 'undefined' ? { 'Content-Type': 'application/json' } : {}),
+    },
   }).then(async (res) => {
     inFlight = false;
     if (res.ok) {
@@ -56,12 +59,7 @@ export const requestJson = <T>(
   data: Promise<T>;
   cancel: (reason?: string) => void;
 } => {
-  const { data, cancel } = requestPlain(method, url, body, {
-    ...options,
-    headers: {
-      'Content-Type': 'application/json',
-    },
-  });
+  const { data, cancel } = requestPlain(method, url, body, options);
   return { data: data.then((text) => JSON.parse(text) as T), cancel };
 };
 
