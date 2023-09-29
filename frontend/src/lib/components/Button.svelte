@@ -3,7 +3,7 @@
 
   type Kind =
     | 'primary'
-    | 'seconday'
+    | 'secondary'
     | 'accent'
     | 'neutral'
     | 'info'
@@ -36,7 +36,7 @@
             'bg-transparent hover:bg-primary/5 active:bg-primary/20',
             'border-primary/20 hover:border-primary active:border-primary',
           ],
-          kind == 'seconday' && [
+          kind == 'secondary' && [
             'text-secondary hover:text-secondary-focus',
             'bg-transparent hover:bg-secondary/5 active:bg-secondary/20',
             'border-secondary/20 hover:border-secondary active:border-secondary',
@@ -74,7 +74,7 @@
         ]
       : [
           kind == 'primary' && 'bg-primary text-primary-content hover:bg-primary-focus',
-          kind == 'seconday' && 'bg-secondary text-secondary-content hover:bg-secondary-focus',
+          kind == 'secondary' && 'bg-secondary text-secondary-content hover:bg-secondary-focus',
           kind == 'accent' && 'bg-accent text-accent-content hover:bg-accent-focus',
           kind == 'neutral' && 'bg-neutral text-neutral-content hover:bg-neutral-focus',
           kind == 'info' && 'bg-info text-info-content hover:bg-info-focus',

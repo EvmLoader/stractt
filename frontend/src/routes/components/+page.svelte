@@ -40,8 +40,8 @@
     <div class="flex flex-wrap items-center gap-x-2 rounded-xl border p-4 shadow-xl">
       <Button>click me</Button>
       <Button padding={false}><HandThumbUp /></Button>
-      <Button kind="seconday">click me</Button>
-      <Button kind="seconday" padding={false}><HandThumbUp /></Button>
+      <Button kind="secondary">click me</Button>
+      <Button kind="secondary" padding={false}><HandThumbUp /></Button>
       <Button kind="accent">click me</Button>
       <Button kind="accent" padding={false}><HandThumbUp /></Button>
       <Button kind="neutral">click me</Button>
@@ -49,8 +49,8 @@
       <hr class="my-2 w-full" />
       <Button pale>click me</Button>
       <Button pale padding={false}><HandThumbUp /></Button>
-      <Button pale kind="seconday">click me</Button>
-      <Button pale kind="seconday" padding={false}><HandThumbUp /></Button>
+      <Button pale kind="secondary">click me</Button>
+      <Button pale kind="secondary" padding={false}><HandThumbUp /></Button>
       <Button pale kind="accent">click me</Button>
       <Button pale kind="accent" padding={false}><HandThumbUp /></Button>
       <Button pale kind="neutral">click me</Button>
