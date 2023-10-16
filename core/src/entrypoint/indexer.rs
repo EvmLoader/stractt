@@ -98,6 +98,7 @@ impl IndexingWorker {
     }
 }
 
+#[tracing::instrument(skip_all, fields(warc_paths=?job.warc_paths))]
 pub fn process_job(job: &Job, worker: &IndexingWorker) -> Index {
     let name = job.warc_paths.first().unwrap().split('/').last().unwrap();
 
@@ -105,7 +106,7 @@ pub fn process_job(job: &Job, worker: &IndexingWorker) -> Index {
     let mut has_page_centrality = false;
     let mut has_backlinks = false;
 
-    info!("processing {}", name);
+    info!(?name, "processing");
 
     let mut index = Index::open(Path::new(&job.base_path).join(name)).unwrap();
 
@@ -117,13 +118,12 @@ pub fn process_job(job: &Job, worker: &IndexingWorker) -> Index {
     let current_timestamp = Utc::now().timestamp().max(0) as usize;
 
     for file in warc_files.by_ref() {
-        for record in
-            file.records()
-                .flatten()
-                .filter(|record| match &record.response.payload_type {
-                    Some(payload_type) => !matches!(payload_type.as_str(), "application/pdf"),
-                    None => true,
-                })
+        for record in file
+            .records()
+            .filter(|record| match &record.response.payload_type {
+                Some(payload_type) => !matches!(payload_type.as_str(), "application/pdf"),
+                None => true,
+            })
         {
             let mut html =
                 match Html::parse_without_text(&record.response.body, &record.request.url) {

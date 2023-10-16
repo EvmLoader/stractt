@@ -34,18 +34,20 @@ fn calculate(graph: &Webgraph, with_progress: bool) -> (HashMap<Node, f64>, i32)
 
     let nodes: Vec<_> = graph.nodes().take(100_000).collect();
 
-    let pb =
-        if with_progress {
-            let pb = ProgressBar::new(nodes.len() as u64);
-            pb.set_style(
-        ProgressStyle::default_bar()
-            .template("{spinner:.green} [{elapsed_precise}] [{wide_bar}] {pos:>7}/{len:7} ({eta})")
-            .progress_chars("#>-"),
-    );
-            Some(pb)
-        } else {
-            None
-        };
+    let pb = if with_progress {
+        let pb = ProgressBar::new(nodes.len() as u64);
+        pb.set_style(
+            ProgressStyle::default_bar()
+                .template(
+                    "{spinner:.green} [{elapsed_precise}] [{wide_bar}] {pos:>7}/{len:7} ({eta})",
+                )
+                .unwrap()
+                .progress_chars("#>-"),
+        );
+        Some(pb)
+    } else {
+        None
+    };
 
     for s in nodes.into_iter() {
         if let Some(pb) = &pb {

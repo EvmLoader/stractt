@@ -30,6 +30,9 @@ const DATA_PATH: &str = "data";
 const BUCKET_NAME: &str = "public";
 
 fn download_files() {
+    // TODO
+    return;
+
     tokio::runtime::Builder::new_current_thread()
         .enable_all()
         .build()

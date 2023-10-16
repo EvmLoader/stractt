@@ -31,6 +31,7 @@ axum-macros = {workspace = true}
 base64 = {workspace = true}
 bincode = {workspace = true}
 bitvec = {workspace = true}
+bstr.workspace = true
 bytemuck = {workspace = true}
 byteorder = {workspace = true}
 bzip2 = {workspace = true}
@@ -97,6 +98,7 @@ toml = {workspace = true}
 torch-sys = {workspace = true}
 tower-http = {workspace = true}
 tracing = {workspace = true}
+tracing-indicatif = {workspace = true}
 tracing-subscriber = {workspace = true}
 url = {workspace = true}
 urlencoding = {workspace = true}

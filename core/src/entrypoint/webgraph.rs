@@ -22,11 +22,13 @@ use crate::{
     webpage::{url_ext::UrlExt, Html},
     Result,
 };
+use indicatif::ProgressStyle;
 use itertools::Itertools;
 use serde::{Deserialize, Serialize};
 use std::{fs, path::Path};
 use tokio::pin;
-use tracing::{info, trace};
+use tracing::{debug, info, info_span, trace, Span};
+use tracing_indicatif::span_ext::IndicatifSpanExt;
 
 #[derive(Debug, Serialize, Deserialize, Clone)]
 struct GraphPointer {
@@ -88,10 +90,11 @@ pub struct WebgraphWorker {
 }
 
 impl WebgraphWorker {
+    #[tracing::instrument(skip_all, fields(warc_paths=?job.warc_paths))]
     pub fn process_job(&mut self, job: &Job) {
         let name = job.warc_paths.first().unwrap().split('/').last().unwrap();
 
-        info!("processing {}", name);
+        info!(?name, "processing");
 
         let source = WarcSource::from(job.config.clone());
 
@@ -99,7 +102,24 @@ impl WebgraphWorker {
         pin!(warc_files);
 
         for file in warc_files.by_ref() {
-            for record in file.records().flatten() {
+            let start = std::time::Instant::now();
+
+            debug!(file=?file.name());
+
+            let count = file.records().count();
+            debug!(?count, took=?start.elapsed());
+
+            let file_span = info_span!("file", file=?file.name());
+            file_span.pb_set_style(&ProgressStyle::default_bar());
+            file_span.pb_set_length(count as _);
+            let _enter = file_span.enter();
+
+            debug!(dur=?start.elapsed(), "counted in");
+            debug!("begining records");
+
+            for record in file.records() {
+                Span::current().pb_inc(1);
+
                 let webpage =
                     match Html::parse_without_text(&record.response.body, &record.request.url) {
                         Ok(webpage) => webpage,

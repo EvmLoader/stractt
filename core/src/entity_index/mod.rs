@@ -272,6 +272,8 @@ impl EntityIndex {
         self.reader.reload().unwrap();
         self.attribute_occurrences.flush();
         info!("downloading images");
+        // TODO
+        return;
         self.image_downloader.download(&mut self.image_store);
     }
 

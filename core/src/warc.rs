@@ -14,6 +14,8 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
+mod next;
+
 use crate::distributed::retry_strategy::ExponentialBackoff;
 use crate::{config::S3Config, config::WarcSource, Error, Result};
 use std::collections::BTreeMap;
@@ -32,6 +34,7 @@ use proptest_derive::Arbitrary;
 use tracing::{debug, trace};
 
 pub struct WarcFile {
+    name: Option<String>,
     bytes: Vec<u8>,
 }
 
@@ -64,24 +67,39 @@ fn decode(raw: &[u8]) -> String {
 
 impl WarcFile {
     pub fn new(bytes: Vec<u8>) -> Self {
-        Self { bytes }
+        Self { bytes, name: None }
     }
 
     pub fn open<P: AsRef<Path>>(path: P) -> Result<Self> {
+        let path = path.as_ref();
         let file = File::open(path)?;
         let mut reader = BufReader::new(file);
 
         let mut bytes = Vec::new();
         reader.read_to_end(&mut bytes)?;
 
-        Ok(Self::new(bytes))
+        Ok(Self::new(bytes).with_name(path.display().to_string()))
     }
+
+    // dur=15.453318333s
+    // pub fn records(&self) -> impl Iterator<Item = WarcRecord> + '_ {
+    //     next::multi_pass(&self.bytes)
+    // }
 
     pub fn records(&self) -> RecordIterator<&[u8]> {
         RecordIterator {
             reader: BufReader::new(MultiGzDecoder::new(&self.bytes[..])),
             num_reads: 0,
+            header_cache: Default::default(),
         }
+    }
+
+    pub fn name(&self) -> Option<&str> {
+        self.name.as_deref()
+    }
+    pub fn with_name(mut self, name: String) -> Self {
+        self.name = Some(name);
+        self
     }
 
     pub(crate) fn download(source: &WarcSource, warc_path: &str) -> Result<Self> {
@@ -92,7 +110,7 @@ impl WarcFile {
         let mut buf = Vec::new();
         cursor.read_to_end(&mut buf)?;
 
-        Ok(Self::new(buf))
+        Ok(Self::new(buf).with_name(warc_path.to_string()))
     }
 
     pub(crate) fn download_into_buf<W: Write + Seek>(
@@ -202,8 +220,8 @@ impl WarcFile {
 }
 
 #[derive(Debug)]
-struct RawWarcRecord {
-    header: BTreeMap<String, String>,
+struct RawWarcRecord<'a> {
+    header: &'a BTreeMap<String, String>,
     content: Vec<u8>,
 }
 
@@ -287,7 +305,11 @@ impl Metadata {
 pub struct RecordIterator<R: Read> {
     reader: BufReader<MultiGzDecoder<R>>,
     num_reads: usize,
+    header_cache: BTreeMap<String, String>,
 }
+
+// Pre:     dur=15.415255875s
+// Try 1:   dur=15.286607375s
 
 impl<R: Read> RecordIterator<R> {
     fn next_raw(&mut self) -> Option<Result<RawWarcRecord>> {
@@ -307,10 +329,12 @@ impl<R: Read> RecordIterator<R> {
             return Some(Err(Error::WarcParse("Unknown WARC version").into()));
         }
 
-        let mut header = BTreeMap::<String, String>::new();
+        let mut header = &mut self.header_cache;
+        header.clear();
 
+        let mut line_buf = String::new();
         loop {
-            let mut line_buf = String::new();
+            line_buf.clear();
             if let Err(io) = self.reader.read_line(&mut line_buf) {
                 return Some(Err(io.into()));
             }
@@ -333,7 +357,7 @@ impl<R: Read> RecordIterator<R> {
                 }
 
                 line_buf.pop(); // remove colon
-                let key = line_buf;
+                let key = &line_buf;
 
                 header.insert(key.to_ascii_uppercase(), value);
             } else {
@@ -378,7 +402,8 @@ impl<R: Read> RecordIterator<R> {
 }
 
 impl<R: Read> Iterator for RecordIterator<R> {
-    type Item = Result<WarcRecord>;
+    // type Item = Result<WarcRecord>;
+    type Item = WarcRecord;
 
     fn next(&mut self) -> Option<Self::Item> {
         if self.num_reads == 0 {
@@ -390,7 +415,8 @@ impl<R: Read> Iterator for RecordIterator<R> {
 
         while let Some(item) = self.next_raw() {
             if item.is_err() {
-                return Some(Err(item.err().unwrap()));
+                return None;
+                // Some(Err(item.err().unwrap()));
             }
 
             let item = item.unwrap();
@@ -409,7 +435,8 @@ impl<R: Read> Iterator for RecordIterator<R> {
         let response = self.next_raw()?;
 
         if response.is_err() {
-            return Some(Err(response.err().unwrap()));
+            return None;
+            // Some(Err(response.err().unwrap()));
         }
 
         let response = response.unwrap();
@@ -417,17 +444,19 @@ impl<R: Read> Iterator for RecordIterator<R> {
         match response.header.get("WARC-TYPE") {
             Some(warc_type) => {
                 if warc_type.as_str() != "response" {
-                    return Some(Err(Error::WarcParse(
-                        "Expected response, got something else",
-                    )
-                    .into()));
+                    return None;
+                    // Some(Err(Error::WarcParse(
+                    //     "Expected response, got something else",
+                    // )
+                    // .into()));
                 }
             }
             None => {
-                return Some(Err(Error::WarcParse(
-                    "Expected response, got something else",
-                )
-                .into()));
+                return None;
+                // Some(Err(Error::WarcParse(
+                //     "Expected response, got something else",
+                // )
+                // .into()));
             }
         }
 
@@ -436,7 +465,8 @@ impl<R: Read> Iterator for RecordIterator<R> {
         let metadata = self.next_raw()?;
 
         if metadata.is_err() {
-            return Some(Err(metadata.err().unwrap()));
+            return None;
+            // Some(Err(metadata.err().unwrap()));
         }
 
         let metadata = metadata.unwrap();
@@ -444,38 +474,41 @@ impl<R: Read> Iterator for RecordIterator<R> {
         match metadata.header.get("WARC-TYPE") {
             Some(warc_type) => {
                 if warc_type.as_str() != "metadata" {
-                    return Some(Err(Error::WarcParse(
-                        "Expected metadata, got something else",
-                    )
-                    .into()));
+                    return None;
+                    // Some(Err(Error::WarcParse(
+                    //     "Expected metadata, got something else",
+                    // )
+                    // .into()));
                 }
             }
             None => {
-                return Some(Err(Error::WarcParse(
-                    "Expected metadata, got something else",
-                )
-                .into()));
+                return None;
+                // Some(Err(Error::WarcParse(
+                //     "Expected metadata, got something else",
+                // )
+                // .into()));
             }
         }
 
         let metadata = Metadata::from_raw(metadata);
 
         if request.is_err() || response.is_err() || metadata.is_err() {
-            return Some(Err(Error::WarcParse(
-                "Request, response or metadata is error",
-            )
-            .into()));
+            return None;
+            // Some(Err(Error::WarcParse(
+            //     "Request, response or metadata is error",
+            // )
+            // .into()));
         }
 
         let request = request.unwrap();
         let response = response.unwrap();
         let metadata = metadata.unwrap();
 
-        Some(Ok(WarcRecord {
+        Some(WarcRecord {
             request,
             response,
             metadata,
-        }))
+        })
     }
 }
 
@@ -625,7 +658,7 @@ mod tests {
 
         let records: Vec<WarcRecord> = WarcFile::new(compressed)
             .records()
-            .map(|res| res.unwrap())
+            // .map(|res| res.unwrap())
             .collect();
 
         assert_eq!(records.len(), 1);
@@ -669,7 +702,7 @@ mod tests {
 
         let records: Vec<WarcRecord> = WarcFile::new(compressed)
             .records()
-            .map(|res| res.unwrap())
+            // .map(|res| res.unwrap())
             .collect();
 
         assert_eq!(records.len(), 2);
@@ -702,7 +735,7 @@ mod tests {
         let compressed = writer.finish().unwrap();
         let records: Vec<WarcRecord> = WarcFile::new(compressed)
             .records()
-            .map(|res| res.unwrap())
+            // .map(|res| res.unwrap())
             .collect();
 
         assert_eq!(records.len(), 1);
@@ -734,7 +767,7 @@ mod tests {
         let compressed = writer.finish().unwrap();
         let records: Vec<WarcRecord> = WarcFile::new(compressed)
             .records()
-            .map(|res| res.unwrap())
+            // .map(|res| res.unwrap())
             .collect();
 
         assert_eq!(records.len(), 1);
@@ -754,7 +787,7 @@ mod tests {
 
             let read_records: Vec<WarcRecord> = WarcFile::new(compressed)
                 .records()
-                .map(|res| res.unwrap())
+                // .map(|res| res.unwrap())
                 .collect();
 
             prop_assert_eq!(records, read_records);

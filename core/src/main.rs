@@ -20,6 +20,7 @@ use std::fs;
 use std::path::Path;
 use stract::config;
 use stract::entrypoint::autosuggest_scrape::{self, Gl};
+use tracing_indicatif::IndicatifLayer;
 
 #[cfg(feature = "dev")]
 use stract::entrypoint::configure;
@@ -208,12 +209,21 @@ fn load_toml_config<T: DeserializeOwned, P: AsRef<Path>>(path: P) -> T {
 }
 
 fn main() -> Result<()> {
-    tracing_subscriber::fmt()
-        .with_max_level(tracing::Level::INFO)
-        .with_env_filter(tracing_subscriber::EnvFilter::from_default_env())
-        .without_time()
-        .with_target(false)
-        .finish()
+    let indicatif_layer = IndicatifLayer::new();
+
+    tracing_subscriber::registry()
+        .with(
+            tracing_subscriber::EnvFilter::builder()
+                .with_default_directive(tracing::Level::INFO.into())
+                .from_env_lossy(),
+        )
+        .with(
+            tracing_subscriber::fmt::layer()
+                .without_time()
+                .with_target(false)
+                .with_writer(indicatif_layer.get_stderr_writer()),
+        )
+        .with(indicatif_layer)
         .init();
 
     let args = Args::parse();
