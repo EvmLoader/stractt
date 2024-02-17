@@ -73,6 +73,7 @@ impl Widgets {
                 self.thesaurus
                     .as_ref()
                     .and_then(|thesaurus| thesaurus.lookup(&query))
+                    .map(Into::into)
                     .map(Widget::Thesaurus)
             })
     }

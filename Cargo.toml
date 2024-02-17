@@ -1,8 +1,9 @@
 [workspace]
 members = [
     "crates/core",
-    "crates/optics",
     "crates/kuchiki",
+    "crates/optics",
+    "crates/thesaurus",
     "crates/zimba",
 ]
 resolver = "2"

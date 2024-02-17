@@ -1,0 +1,1911 @@
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix ili: <http://ili.globalwordnet.org/ili/> .
+@prefix lime: <http://www.w3.org/ns/lemon/lime#> .
+@prefix ontolex: <http://www.w3.org/ns/lemon/ontolex#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix skos: <http://www.w3.org/2004/02/skos/core#> .
+@prefix synsem: <http://www.w3.org/ns/lemon/synsem#> .
+@prefix wn: <https://globalwordnet.github.io/schemas/wn#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix dct: <http://purl.org/dc/terms/> .
+@prefix wordnetlicense: <http://wordnet.princeton.edu/wordnet/license/> .
+@prefix wnlemma: <http://wordnet-rdf.princeton.edu/rdf/lemma/> .
+@prefix wnid: <http://wordnet-rdf.princeton.edu/id/> .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/able#able-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/able#able-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/able#able-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/able#able-oewn-00001740-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/able#able-a-lemma>
+    ontolex:writtenRep "able"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/able#able-oewn-00001740-a>
+ wn:antonym <http://wordnet-rdf.princeton.edu/lemma/unable#unable-oewn-00002098-a> ;  wn:derivation <http://wordnet-rdf.princeton.edu/lemma/ability#ability-oewn-05624029-n> ;  wn:derivation <http://wordnet-rdf.princeton.edu/lemma/ability#ability-oewn-05207437-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00001740-a ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00001740-a
+  wn:ili ili:i1 ;
+  wn:partOfSpeech wn:adjective ;
+  dc:subject "adj.all" ;
+  wn:definition [ rdf:value "(usually followed by `to') having the necessary means or skill or know-how or authority to do something"@en ] ;
+  wn:attribute wnid:oewn-05207437-n ;   wn:attribute wnid:oewn-05624029-n ; 
+  wn:example [ rdf:value "able to swim"@en ] ;
+  wn:example [ rdf:value "she was able to program her computer"@en ] ;
+  wn:example [ rdf:value "we were at last able to buy a car"@en ] ;
+  wn:example [ rdf:value "able to get a grant for the project"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/entity#entity-n> .
+
+<http://wordnet-rdf.princeton.edu/lemma/entity#entity-n>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/entity#entity-n-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/entity#entity-oewn-00001740-n> ; 
+ wn:partOfSpeech wn:noun ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/entity#entity-n-lemma>
+    ontolex:writtenRep "entity"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/entity#entity-oewn-00001740-n>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00001740-n ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00001740-n
+  wn:ili ili:i35545 ;
+  wn:partOfSpeech wn:noun ;
+  dc:subject "noun.Tops" ;
+  wn:definition [ rdf:value "that which is perceived or known or inferred to have its own distinct existence (living or nonliving)"@en ] ;
+  wn:hyponym wnid:oewn-00001930-n ;   wn:hyponym wnid:oewn-00002137-n ;   wn:hyponym wnid:oewn-04431553-n ; 
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/a_capella#a_capella-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/a_capella#a_capella-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/a_capella#a_capella-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/a_capella#a_capella-oewn-00001740-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/a_capella#a_capella-r-lemma>
+    ontolex:writtenRep "a capella"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/a_cappella#a_cappella-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/a_cappella#a_cappella-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/a_cappella#a_cappella-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/a_cappella#a_cappella-oewn-00001740-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/a_cappella#a_cappella-r-lemma>
+    ontolex:writtenRep "a cappella"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/a_capella#a_capella-oewn-00001740-r>
+ wn:pertainym <http://wordnet-rdf.princeton.edu/lemma/a_capella#a_capella-oewn-02260096-s> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00001740-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/a_cappella#a_cappella-oewn-00001740-r>
+ wn:pertainym <http://wordnet-rdf.princeton.edu/lemma/a_cappella#a_cappella-oewn-02260096-s> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00001740-r ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00001740-r
+  wn:ili ili:i18157 ;
+  wn:partOfSpeech wn:adverb ;
+  dc:subject "adv.all" ;
+  wn:definition [ rdf:value "without musical accompaniment"@en ] ;
+
+  wn:example [ rdf:value "they performed a cappella"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/breathe#breathe-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/breathe#breathe-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/breathe#breathe-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/breathe#breathe-oewn-00001740-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s"@en ] ;  synsem:synBehavior [ rdfs:label "Somebody ----s something"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/breathe#breathe-v-lemma>
+    ontolex:writtenRep "breathe"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/respire#respire-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/respire#respire-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/respire#respire-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/respire#respire-oewn-00001740-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s"@en ] ;  synsem:synBehavior [ rdfs:label "Somebody ----s something"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/respire#respire-v-lemma>
+    ontolex:writtenRep "respire"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/suspire#suspire-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/suspire#suspire-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/suspire#suspire-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/suspire#suspire-oewn-00001740-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s"@en ] ;  synsem:synBehavior [ rdfs:label "Somebody ----s something"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/suspire#suspire-v-lemma>
+    ontolex:writtenRep "suspire"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/take_a_breath#take_a_breath-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/take_a_breath#take_a_breath-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/take_a_breath#take_a_breath-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/take_a_breath#take_a_breath-oewn-00001740-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s"@en ] ;  synsem:synBehavior [ rdfs:label "Somebody ----s something"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/take_a_breath#take_a_breath-v-lemma>
+    ontolex:writtenRep "take a breath"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/breathe#breathe-oewn-00001740-v>
+ wn:also <http://wordnet-rdf.princeton.edu/lemma/breathe_out#breathe_out-oewn-00004227-v> ;  wn:also <http://wordnet-rdf.princeton.edu/lemma/breathe_in#breathe_in-oewn-00005041-v> ;  wn:derivation <http://wordnet-rdf.princeton.edu/lemma/breather#breather-oewn-04257960-n> ;  wn:derivation <http://wordnet-rdf.princeton.edu/lemma/breathing#breathing-oewn-00832852-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00001740-v ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/respire#respire-oewn-00001740-v>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/respiratory#respiratory-oewn-03121972-a> ;  wn:derivation <http://wordnet-rdf.princeton.edu/lemma/respiration#respiration-oewn-00832852-n> ;  wn:derivation <http://wordnet-rdf.princeton.edu/lemma/respirator#respirator-oewn-04087945-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00001740-v ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/suspire#suspire-oewn-00001740-v>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00001740-v ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/take_a_breath#take_a_breath-oewn-00001740-v>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00001740-v ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00001740-v
+  wn:ili ili:i21778 ;
+  wn:partOfSpeech wn:verb ;
+  dc:subject "verb.body" ;
+  wn:definition [ rdf:value "draw air into, and expel out of, the lungs"@en ] ;
+  wn:entails wnid:oewn-00005041-v ;   wn:entails wnid:oewn-00004227-v ;   wn:similar wnid:oewn-00002325-v ;   wn:similar wnid:oewn-00002573-v ;   wn:hyponym wnid:oewn-00002573-v ;   wn:hyponym wnid:oewn-00002724-v ;   wn:hyponym wnid:oewn-00002942-v ;   wn:hyponym wnid:oewn-00003826-v ;   wn:hyponym wnid:oewn-00004032-v ;   wn:hyponym wnid:oewn-00004227-v ;   wn:hyponym wnid:oewn-00005041-v ;   wn:hyponym wnid:oewn-00006697-v ;   wn:hyponym wnid:oewn-00007328-v ;   wn:hyponym wnid:oewn-00017024-v ; 
+  wn:example [ rdf:value "I can breathe better when the air is clean"@en ] ;
+  wn:example [ rdf:value "The patient is respiring"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/A.D.#A.D.-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/A.D.#A.D.-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/A.D.#A.D.-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/A.D.#A.D.-oewn-00001885-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/A.D.#A.D.-r-lemma>
+    ontolex:writtenRep "A.D."@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/AD#AD-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/AD#AD-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/AD#AD-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/AD#AD-oewn-00001885-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/AD#AD-r-lemma>
+    ontolex:writtenRep "AD"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/anno_Domini#anno_Domini-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/anno_Domini#anno_Domini-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/anno_Domini#anno_Domini-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/anno_Domini#anno_Domini-oewn-00001885-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/anno_Domini#anno_Domini-r-lemma>
+    ontolex:writtenRep "anno Domini"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/A.D.#A.D.-oewn-00001885-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00001885-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/AD#AD-oewn-00001885-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00001885-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/anno_Domini#anno_Domini-oewn-00001885-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00001885-r ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00001885-r
+  wn:ili ili:i18158 ;
+  wn:partOfSpeech wn:adverb ;
+  dc:subject "adv.all" ;
+  wn:definition [ rdf:value "in the Christian era; used before dates after the supposed year Christ was born"@en ] ;
+
+  wn:example [ rdf:value "in AD 200"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/physical_entity#physical_entity-n> .
+
+<http://wordnet-rdf.princeton.edu/lemma/physical_entity#physical_entity-n>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/physical_entity#physical_entity-n-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/physical_entity#physical_entity-oewn-00001930-n> ; 
+ wn:partOfSpeech wn:noun ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/physical_entity#physical_entity-n-lemma>
+    ontolex:writtenRep "physical entity"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/physical_entity#physical_entity-oewn-00001930-n>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00001930-n ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00001930-n
+  wn:ili ili:i35546 ;
+  wn:partOfSpeech wn:noun ;
+  dc:subject "noun.Tops" ;
+  wn:definition [ rdf:value "an entity that has physical existence"@en ] ;
+  wn:hypernym wnid:oewn-00001740-n ;   wn:hyponym wnid:oewn-14604577-n ;   wn:hyponym wnid:oewn-00002452-n ;   wn:hyponym wnid:oewn-00002684-n ;   wn:hyponym wnid:oewn-00007347-n ;   wn:hyponym wnid:oewn-00021007-n ;   wn:hyponym wnid:oewn-00029976-n ; 
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/C.E.#C.E.-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/C.E.#C.E.-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/C.E.#C.E.-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/C.E.#C.E.-oewn-00002029-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/C.E.#C.E.-r-lemma>
+    ontolex:writtenRep "C.E."@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/CE#CE-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/CE#CE-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/CE#CE-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/CE#CE-oewn-00002029-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/CE#CE-r-lemma>
+    ontolex:writtenRep "CE"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/Common_Era#Common_Era-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/Common_Era#Common_Era-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/Common_Era#Common_Era-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/Common_Era#Common_Era-oewn-00002029-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/Common_Era#Common_Era-r-lemma>
+    ontolex:writtenRep "Common Era"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/C.E.#C.E.-oewn-00002029-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002029-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/CE#CE-oewn-00002029-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002029-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/Common_Era#Common_Era-oewn-00002029-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002029-r ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002029-r
+  wn:ili ili:i18159 ;
+  wn:partOfSpeech wn:adverb ;
+  dc:subject "adv.all" ;
+  wn:definition [ rdf:value "of the period coinciding with the Christian era; preferred by some writers who are not Christians"@en ] ;
+
+  wn:example [ rdf:value "in 200 CE"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/unable#unable-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/unable#unable-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/unable#unable-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/unable#unable-oewn-00002098-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/unable#unable-a-lemma>
+    ontolex:writtenRep "unable"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/unable#unable-oewn-00002098-a>
+ wn:antonym <http://wordnet-rdf.princeton.edu/lemma/able#able-oewn-00001740-a> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002098-a ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002098-a
+  wn:ili ili:i2 ;
+  wn:partOfSpeech wn:adjective ;
+  dc:subject "adj.all" ;
+  wn:definition [ rdf:value "(usually followed by `to') not having the necessary means or skill or know-how"@en ] ;
+  wn:attribute wnid:oewn-05207437-n ; 
+  wn:example [ rdf:value "unable to get to town without a car"@en ] ;
+  wn:example [ rdf:value "unable to obtain funds"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/abstract_entity#abstract_entity-n> .
+
+<http://wordnet-rdf.princeton.edu/lemma/abstract_entity#abstract_entity-n>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/abstract_entity#abstract_entity-n-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/abstract_entity#abstract_entity-oewn-00002137-n> ; 
+ wn:partOfSpeech wn:noun ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/abstract_entity#abstract_entity-n-lemma>
+    ontolex:writtenRep "abstract entity"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/abstraction#abstraction-n> .
+
+<http://wordnet-rdf.princeton.edu/lemma/abstraction#abstraction-n>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/abstraction#abstraction-n-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/abstraction#abstraction-oewn-00002137-n> ; 
+ wn:partOfSpeech wn:noun ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/abstraction#abstraction-n-lemma>
+    ontolex:writtenRep "abstraction"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/abstract_entity#abstract_entity-oewn-00002137-n>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002137-n ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/abstraction#abstraction-oewn-00002137-n>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/abstract#abstract-oewn-00694095-v> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002137-n ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002137-n
+  wn:ili ili:i35547 ;
+  wn:partOfSpeech wn:noun ;
+  dc:subject "noun.Tops" ;
+  wn:definition [ rdf:value "a general concept formed by extracting common features from specific examples"@en ] ;
+  wn:hypernym wnid:oewn-00001740-n ;   wn:hyponym wnid:oewn-08016141-n ;   wn:hyponym wnid:oewn-05818169-n ;   wn:hyponym wnid:oewn-00023280-n ;   wn:hyponym wnid:oewn-00024444-n ;   wn:hyponym wnid:oewn-00029677-n ;   wn:hyponym wnid:oewn-00031563-n ;   wn:hyponym wnid:oewn-00032220-n ;   wn:hyponym wnid:oewn-00033319-n ;   wn:hyponym wnid:oewn-00033914-n ; 
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/B.C.#B.C.-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/B.C.#B.C.-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/B.C.#B.C.-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/B.C.#B.C.-oewn-00002190-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/B.C.#B.C.-r-lemma>
+    ontolex:writtenRep "B.C."@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/BC#BC-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/BC#BC-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/BC#BC-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/BC#BC-oewn-00002190-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/BC#BC-r-lemma>
+    ontolex:writtenRep "BC"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/before_Christ#before_Christ-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/before_Christ#before_Christ-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/before_Christ#before_Christ-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/before_Christ#before_Christ-oewn-00002190-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/before_Christ#before_Christ-r-lemma>
+    ontolex:writtenRep "before Christ"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/B.C.#B.C.-oewn-00002190-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002190-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/BC#BC-oewn-00002190-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002190-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/before_Christ#before_Christ-oewn-00002190-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002190-r ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002190-r
+  wn:ili ili:i18160 ;
+  wn:partOfSpeech wn:adverb ;
+  dc:subject "adv.all" ;
+  wn:definition [ rdf:value "before the Christian era; used following dates before the supposed year Christ was born"@en ] ;
+
+  wn:example [ rdf:value "in 200 BC"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/abaxial#abaxial-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/abaxial#abaxial-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/abaxial#abaxial-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/abaxial#abaxial-oewn-00002312-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/abaxial#abaxial-a-lemma>
+    ontolex:writtenRep "abaxial"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/dorsal#dorsal-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/dorsal#dorsal-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/dorsal#dorsal-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/dorsal#dorsal-oewn-00002312-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/dorsal#dorsal-a-lemma>
+    ontolex:writtenRep "dorsal"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/abaxial#abaxial-oewn-00002312-a>
+ wn:antonym <http://wordnet-rdf.princeton.edu/lemma/adaxial#adaxial-oewn-00002527-a> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002312-a ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/dorsal#dorsal-oewn-00002312-a>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002312-a ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002312-a
+  wn:ili ili:i3 ;
+  wn:partOfSpeech wn:adjective ;
+  dc:subject "adj.all" ;
+  wn:definition [ rdf:value "facing away from the axis of an organ or organism"@en ] ;
+  wn:domain_topic wnid:oewn-06047178-n ; 
+  wn:example [ rdf:value "the abaxial surface of a leaf is the underside or side facing away from the stem"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/respire#respire-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/respire#respire-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/respire#respire-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/respire#respire-oewn-00002325-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/respire#respire-v-lemma>
+    ontolex:writtenRep "respire"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/respire#respire-oewn-00002325-v>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/respiratory#respiratory-oewn-03121972-a> ;  wn:derivation <http://wordnet-rdf.princeton.edu/lemma/respiration#respiration-oewn-00832852-n> ;  wn:derivation <http://wordnet-rdf.princeton.edu/lemma/respiration#respiration-oewn-00832472-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002325-v ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002325-v
+  wn:ili ili:i21779 ;
+  wn:partOfSpeech wn:verb ;
+  dc:subject "verb.body" ;
+  wn:definition [ rdf:value "undergo the biomedical and metabolic processes of respiration by taking up oxygen and producing carbon monoxide"@en ] ;
+  wn:hypernym wnid:oewn-02112831-v ;   wn:similar wnid:oewn-00001740-v ; 
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/B.C.E.#B.C.E.-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/B.C.E.#B.C.E.-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/B.C.E.#B.C.E.-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/B.C.E.#B.C.E.-oewn-00002344-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/B.C.E.#B.C.E.-r-lemma>
+    ontolex:writtenRep "B.C.E."@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/BCE#BCE-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/BCE#BCE-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/BCE#BCE-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/BCE#BCE-oewn-00002344-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/BCE#BCE-r-lemma>
+    ontolex:writtenRep "BCE"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/B.C.E.#B.C.E.-oewn-00002344-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002344-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/BCE#BCE-oewn-00002344-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002344-r ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002344-r
+  wn:ili ili:i18161 ;
+  wn:partOfSpeech wn:adverb ;
+  dc:subject "adv.all" ;
+  wn:definition [ rdf:value "of the period before the Common Era; preferred by some writers who are not Christians"@en ] ;
+
+  wn:example [ rdf:value "in 200 BCE"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/thing#thing-n> .
+
+<http://wordnet-rdf.princeton.edu/lemma/thing#thing-n>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/thing#thing-n-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/thing#thing-oewn-00002452-n> ; 
+ wn:partOfSpeech wn:noun ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/thing#thing-n-lemma>
+    ontolex:writtenRep "thing"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/thing#thing-oewn-00002452-n>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002452-n ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002452-n
+  wn:ili ili:i35548 ;
+  wn:partOfSpeech wn:noun ;
+  dc:subject "noun.Tops" ;
+  wn:definition [ rdf:value "a separate and self-contained entity"@en ] ;
+  wn:hypernym wnid:oewn-00001930-n ;   wn:hyponym wnid:oewn-09248053-n ;   wn:hyponym wnid:oewn-09335551-n ;   wn:hyponym wnid:oewn-09390100-n ;   wn:hyponym wnid:oewn-09408804-n ;   wn:hyponym wnid:oewn-09430745-n ;   wn:hyponym wnid:oewn-09488589-n ;   wn:hyponym wnid:oewn-09492089-n ;   wn:hyponym wnid:oewn-04354303-n ; 
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/ahorse#ahorse-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/ahorse#ahorse-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/ahorse#ahorse-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/ahorse#ahorse-oewn-00002484-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/ahorse#ahorse-r-lemma>
+    ontolex:writtenRep "ahorse"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/ahorseback#ahorseback-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/ahorseback#ahorseback-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/ahorseback#ahorseback-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/ahorseback#ahorseback-oewn-00002484-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/ahorseback#ahorseback-r-lemma>
+    ontolex:writtenRep "ahorseback"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/horseback#horseback-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/horseback#horseback-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/horseback#horseback-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/horseback#horseback-oewn-00002484-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/horseback#horseback-r-lemma>
+    ontolex:writtenRep "horseback"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/ahorse#ahorse-oewn-00002484-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002484-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/ahorseback#ahorseback-oewn-00002484-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002484-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/horseback#horseback-oewn-00002484-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002484-r ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002484-r
+  wn:ili ili:i18162 ;
+  wn:partOfSpeech wn:adverb ;
+  dc:subject "adv.all" ;
+  wn:definition [ rdf:value "on the back of a horse"@en ] ;
+
+  wn:example [ rdf:value "he rode horseback to town"@en ] ;
+  wn:example [ rdf:value "managed to escape ahorse"@en ] ;
+  wn:example [ rdf:value "policeman patrolled the streets ahorseback"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/adaxial#adaxial-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/adaxial#adaxial-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/adaxial#adaxial-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/adaxial#adaxial-oewn-00002527-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/adaxial#adaxial-a-lemma>
+    ontolex:writtenRep "adaxial"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/ventral#ventral-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/ventral#ventral-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/ventral#ventral-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/ventral#ventral-oewn-00002527-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/ventral#ventral-a-lemma>
+    ontolex:writtenRep "ventral"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/adaxial#adaxial-oewn-00002527-a>
+ wn:antonym <http://wordnet-rdf.princeton.edu/lemma/abaxial#abaxial-oewn-00002312-a> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002527-a ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/ventral#ventral-oewn-00002527-a>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002527-a ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002527-a
+  wn:ili ili:i4 ;
+  wn:partOfSpeech wn:adjective ;
+  dc:subject "adj.all" ;
+  wn:definition [ rdf:value "nearest to or facing toward the axis of an organ or organism"@en ] ;
+  wn:domain_topic wnid:oewn-06047178-n ; 
+  wn:example [ rdf:value "the upper side of a leaf is known as the adaxial surface"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/respire#respire-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/respire#respire-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/respire#respire-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/respire#respire-oewn-00002573-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/respire#respire-v-lemma>
+    ontolex:writtenRep "respire"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/respire#respire-oewn-00002573-v>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/respiratory#respiratory-oewn-03121972-a> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002573-v ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002573-v
+  wn:ili ili:i21780 ;
+  wn:partOfSpeech wn:verb ;
+  dc:subject "verb.body" ;
+  wn:definition [ rdf:value "breathe easily again, as after exertion or anxiety"@en ] ;
+  wn:hypernym wnid:oewn-00001740-v ;   wn:similar wnid:oewn-00001740-v ; 
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/barely#barely-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/barely#barely-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/barely#barely-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/barely#barely-oewn-00002669-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/barely#barely-r-lemma>
+    ontolex:writtenRep "barely"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/hardly#hardly-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/hardly#hardly-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/hardly#hardly-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/hardly#hardly-oewn-00002669-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/hardly#hardly-r-lemma>
+    ontolex:writtenRep "hardly"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/just#just-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/just#just-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/just#just-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/just#just-oewn-00002669-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/just#just-r-lemma>
+    ontolex:writtenRep "just"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/scarce#scarce-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/scarce#scarce-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/scarce#scarce-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/scarce#scarce-oewn-00002669-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/scarce#scarce-r-lemma>
+    ontolex:writtenRep "scarce"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/scarcely#scarcely-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/scarcely#scarcely-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/scarcely#scarcely-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/scarcely#scarcely-oewn-00002669-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/scarcely#scarcely-r-lemma>
+    ontolex:writtenRep "scarcely"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/barely#barely-oewn-00002669-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002669-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/hardly#hardly-oewn-00002669-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002669-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/just#just-oewn-00002669-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002669-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/scarce#scarce-oewn-00002669-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002669-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/scarcely#scarcely-oewn-00002669-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002669-r ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002669-r
+  wn:ili ili:i18163 ;
+  wn:partOfSpeech wn:adverb ;
+  dc:subject "adv.all" ;
+  wn:definition [ rdf:value "only a very short time before"@en ] ;
+
+  wn:example [ rdf:value "we hardly knew them"@en ] ;
+  wn:example [ rdf:value "had scarcely rung the bell when the door flew open"@en ] ;
+  wn:example [ rdf:value "would have scarce arrived before she would have found some excuse to leave"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/object#object-n> .
+
+<http://wordnet-rdf.princeton.edu/lemma/object#object-n>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/object#object-n-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/object#object-oewn-00002684-n> ; 
+ wn:partOfSpeech wn:noun ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/object#object-n-lemma>
+    ontolex:writtenRep "object"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/physical_object#physical_object-n> .
+
+<http://wordnet-rdf.princeton.edu/lemma/physical_object#physical_object-n>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/physical_object#physical_object-n-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/physical_object#physical_object-oewn-00002684-n> ; 
+ wn:partOfSpeech wn:noun ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/physical_object#physical_object-n-lemma>
+    ontolex:writtenRep "physical object"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/object#object-oewn-00002684-n>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/objectify#objectify-oewn-00533687-v> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002684-n ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/physical_object#physical_object-oewn-00002684-n>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002684-n ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002684-n
+  wn:ili ili:i35549 ;
+  wn:partOfSpeech wn:noun ;
+  dc:subject "noun.Tops" ;
+  wn:definition [ rdf:value "a tangible and visible entity; an entity that can cast a shadow"@en ] ;
+  wn:hypernym wnid:oewn-00001930-n ;   wn:hyponym wnid:oewn-07867030-n ;   wn:hyponym wnid:oewn-09261049-n ;   wn:hyponym wnid:oewn-09274595-n ;   wn:hyponym wnid:oewn-09290396-n ;   wn:hyponym wnid:oewn-09302364-n ;   wn:hyponym wnid:oewn-09304683-n ;   wn:hyponym wnid:oewn-09306099-n ;   wn:hyponym wnid:oewn-09310874-n ;   wn:hyponym wnid:oewn-09318244-n ;   wn:hyponym wnid:oewn-09323811-n ;   wn:hyponym wnid:oewn-09324937-n ;   wn:hyponym wnid:oewn-09331304-n ;   wn:hyponym wnid:oewn-09357302-n ;   wn:hyponym wnid:oewn-09358146-n ;   wn:hyponym wnid:oewn-09381447-n ;   wn:hyponym wnid:oewn-09391121-n ;   wn:hyponym wnid:oewn-09430224-n ;   wn:hyponym wnid:oewn-09432081-n ;   wn:hyponym wnid:oewn-09455894-n ;   wn:hyponym wnid:oewn-09491367-n ;   wn:hyponym wnid:oewn-09497292-n ;   wn:hyponym wnid:oewn-09500167-n ;   wn:hyponym wnid:oewn-92464675-n ;   wn:hyponym wnid:oewn-00003553-n ;   wn:hyponym wnid:oewn-00027365-n ;   wn:hyponym wnid:oewn-03013287-n ;   wn:hyponym wnid:oewn-03154617-n ;   wn:hyponym wnid:oewn-03238126-n ;   wn:hyponym wnid:oewn-03343593-n ;   wn:hyponym wnid:oewn-03537260-n ;   wn:hyponym wnid:oewn-03600372-n ;   wn:hyponym wnid:oewn-03615483-n ;   wn:hyponym wnid:oewn-03720260-n ;   wn:hyponym wnid:oewn-03898588-n ;   wn:hyponym wnid:oewn-04018636-n ;   wn:hyponym wnid:oewn-04255138-n ;   wn:hyponym wnid:oewn-04352366-n ;   wn:hyponym wnid:oewn-04493701-n ; 
+  wn:example [ rdf:value "it was full of rackets, balls and other objects"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/choke#choke-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/choke#choke-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/choke#choke-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/choke#choke-oewn-00002724-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/choke#choke-v-lemma>
+    ontolex:writtenRep "choke"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/choke#choke-oewn-00002724-v>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/choking#choking-oewn-14081734-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002724-v ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002724-v
+  wn:ili ili:i21781 ;
+  wn:partOfSpeech wn:verb ;
+  dc:subject "verb.body" ;
+  wn:definition [ rdf:value "breathe with great difficulty, as when experiencing a strong emotion"@en ] ;
+  wn:hypernym wnid:oewn-00001740-v ;   wn:is_caused_by wnid:oewn-00077703-v ; 
+  wn:example [ rdf:value "She choked with emotion when she spoke about her deceased husband"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/acroscopic#acroscopic-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/acroscopic#acroscopic-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/acroscopic#acroscopic-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/acroscopic#acroscopic-oewn-00002730-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/acroscopic#acroscopic-a-lemma>
+    ontolex:writtenRep "acroscopic"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/acroscopic#acroscopic-oewn-00002730-a>
+ wn:antonym <http://wordnet-rdf.princeton.edu/lemma/basiscopic#basiscopic-oewn-00002843-a> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002730-a ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002730-a
+  wn:ili ili:i5 ;
+  wn:partOfSpeech wn:adjective ;
+  dc:subject "adj.all" ;
+  wn:definition [ rdf:value "facing or on the side toward the apex"@en ] ;
+  wn:domain_topic wnid:oewn-06076105-n ; 
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/basiscopic#basiscopic-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/basiscopic#basiscopic-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/basiscopic#basiscopic-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/basiscopic#basiscopic-oewn-00002843-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/basiscopic#basiscopic-a-lemma>
+    ontolex:writtenRep "basiscopic"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/basiscopic#basiscopic-oewn-00002843-a>
+ wn:antonym <http://wordnet-rdf.princeton.edu/lemma/acroscopic#acroscopic-oewn-00002730-a> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002843-a ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002843-a
+  wn:ili ili:i6 ;
+  wn:partOfSpeech wn:adjective ;
+  dc:subject "adj.all" ;
+  wn:definition [ rdf:value "facing or on the side toward the base"@en ] ;
+  wn:domain_topic wnid:oewn-06076105-n ; 
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/barely#barely-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/barely#barely-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/barely#barely-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/barely#barely-oewn-00002935-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/barely#barely-r-lemma>
+    ontolex:writtenRep "barely"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/just#just-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/just#just-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/just#just-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/just#just-oewn-00002935-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/just#just-r-lemma>
+    ontolex:writtenRep "just"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/barely#barely-oewn-00002935-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002935-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/just#just-oewn-00002935-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002935-r ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002935-r
+  wn:ili ili:in ;
+  wn:partOfSpeech wn:adverb ;
+  dc:subject "adv.all" ;
+  wn:definition [ rdf:value "by a little"@en ] ;
+
+  wn:example [ rdf:value "I only just caught the bus"@en ] ;
+  wn:example [ rdf:value "he finished the marathon in just under 3 hours"@en ] ;
+  wn:example [ rdf:value "it was barely 5 a.m."@en ] ;
+  wn:example [ rdf:value "the network has barely 5 percent of viewers"@en ] ;
+  wn:example [ rdf:value "the batter just missed being hit"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/hyperventilate#hyperventilate-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/hyperventilate#hyperventilate-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/hyperventilate#hyperventilate-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/hyperventilate#hyperventilate-oewn-00002942-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/hyperventilate#hyperventilate-v-lemma>
+    ontolex:writtenRep "hyperventilate"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/hyperventilate#hyperventilate-oewn-00002942-v>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/hyperventilation#hyperventilation-oewn-00835531-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002942-v ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002942-v
+  wn:ili ili:i21782 ;
+  wn:partOfSpeech wn:verb ;
+  dc:subject "verb.body" ;
+  wn:definition [ rdf:value "breathe excessively hard and fast"@en ] ;
+  wn:hypernym wnid:oewn-00001740-v ;   wn:similar wnid:oewn-00003133-v ; 
+  wn:example [ rdf:value "The mountain climber started to hyperventilate"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/abducent#abducent-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/abducent#abducent-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/abducent#abducent-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/abducent#abducent-oewn-00002956-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/abducent#abducent-a-lemma>
+    ontolex:writtenRep "abducent"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/abducting#abducting-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/abducting#abducting-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/abducting#abducting-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/abducting#abducting-oewn-00002956-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/abducting#abducting-a-lemma>
+    ontolex:writtenRep "abducting"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/abducent#abducent-oewn-00002956-a>
+ wn:antonym <http://wordnet-rdf.princeton.edu/lemma/adducent#adducent-oewn-00003131-a> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002956-a ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/abducting#abducting-oewn-00002956-a>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00002956-a ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00002956-a
+  wn:ili ili:i7 ;
+  wn:partOfSpeech wn:adjective ;
+  dc:subject "adj.all" ;
+  wn:definition [ rdf:value "especially of muscles; drawing away from the midline of the body or from an adjacent part"@en ] ;
+  wn:domain_topic wnid:oewn-06090110-n ; 
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/adducent#adducent-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/adducent#adducent-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/adducent#adducent-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/adducent#adducent-oewn-00003131-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/adducent#adducent-a-lemma>
+    ontolex:writtenRep "adducent"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/adducting#adducting-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/adducting#adducting-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/adducting#adducting-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/adducting#adducting-oewn-00003131-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/adducting#adducting-a-lemma>
+    ontolex:writtenRep "adducting"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/adductive#adductive-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/adductive#adductive-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/adductive#adductive-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/adductive#adductive-oewn-00003131-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/adductive#adductive-a-lemma>
+    ontolex:writtenRep "adductive"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/adducent#adducent-oewn-00003131-a>
+ wn:antonym <http://wordnet-rdf.princeton.edu/lemma/abducent#abducent-oewn-00002956-a> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003131-a ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/adducting#adducting-oewn-00003131-a>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003131-a ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/adductive#adductive-oewn-00003131-a>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/adduct#adduct-oewn-01451829-v> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003131-a ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003131-a
+  wn:ili ili:i8 ;
+  wn:partOfSpeech wn:adjective ;
+  dc:subject "adj.all" ;
+  wn:definition [ rdf:value "especially of muscles; bringing together or drawing toward the midline of the body or toward an adjacent part"@en ] ;
+  wn:domain_topic wnid:oewn-06090110-n ; 
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/hyperventilate#hyperventilate-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/hyperventilate#hyperventilate-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/hyperventilate#hyperventilate-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/hyperventilate#hyperventilate-oewn-00003133-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s somebody"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/hyperventilate#hyperventilate-v-lemma>
+    ontolex:writtenRep "hyperventilate"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/hyperventilate#hyperventilate-oewn-00003133-v>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/hyperventilation#hyperventilation-oewn-00835531-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003133-v ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003133-v
+  wn:ili ili:i21783 ;
+  wn:partOfSpeech wn:verb ;
+  dc:subject "verb.body" ;
+  wn:definition [ rdf:value "produce hyperventilation in"@en ] ;
+  wn:hypernym wnid:oewn-00078513-v ;   wn:similar wnid:oewn-00002942-v ; 
+  wn:example [ rdf:value "The nurses had to hyperventilate the patient"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/just#just-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/just#just-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/just#just-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/just#just-oewn-00003175-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/just#just-r-lemma>
+    ontolex:writtenRep "just"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/just#just-oewn-00003175-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003175-r ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003175-r
+  wn:ili ili:i18164 ;
+  wn:partOfSpeech wn:adverb ;
+  dc:subject "adv.all" ;
+  wn:definition [ rdf:value "exactly at this moment or the moment described"@en ] ;
+
+  wn:example [ rdf:value "we've just finished painting the walls, so don't touch them"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/aspirate#aspirate-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/aspirate#aspirate-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/aspirate#aspirate-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/aspirate#aspirate-oewn-00003316-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s something"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/aspirate#aspirate-v-lemma>
+    ontolex:writtenRep "aspirate"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/aspirate#aspirate-oewn-00003316-v>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/aspiration#aspiration-oewn-00838449-n> ;  wn:derivation <http://wordnet-rdf.princeton.edu/lemma/aspirator#aspirator-oewn-02751496-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003316-v ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003316-v
+  wn:ili ili:i21784 ;
+  wn:partOfSpeech wn:verb ;
+  dc:subject "verb.body" ;
+  wn:definition [ rdf:value "inhale (air, water, etc.)"@en ] ;
+  wn:hypernym wnid:oewn-00005041-v ; 
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/barely#barely-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/barely#barely-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/barely#barely-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/barely#barely-oewn-00003317-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/barely#barely-r-lemma>
+    ontolex:writtenRep "barely"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/hardly#hardly-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/hardly#hardly-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/hardly#hardly-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/hardly#hardly-oewn-00003317-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/hardly#hardly-r-lemma>
+    ontolex:writtenRep "hardly"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/scarce#scarce-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/scarce#scarce-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/scarce#scarce-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/scarce#scarce-oewn-00003317-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/scarce#scarce-r-lemma>
+    ontolex:writtenRep "scarce"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/scarcely#scarcely-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/scarcely#scarcely-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/scarcely#scarcely-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/scarcely#scarcely-oewn-00003317-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/scarcely#scarcely-r-lemma>
+    ontolex:writtenRep "scarcely"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/barely#barely-oewn-00003317-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003317-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/hardly#hardly-oewn-00003317-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003317-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/scarce#scarce-oewn-00003317-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003317-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/scarcely#scarcely-oewn-00003317-r>
+ wn:pertainym <http://wordnet-rdf.princeton.edu/lemma/scarce#scarce-oewn-00016794-a> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003317-r ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003317-r
+  wn:ili ili:i18165 ;
+  wn:partOfSpeech wn:adverb ;
+  dc:subject "adv.all" ;
+  wn:definition [ rdf:value "almost not"@en ] ;
+
+  wn:example [ rdf:value "he hardly ever goes fishing"@en ] ;
+  wn:example [ rdf:value "he was scarce sixteen years old"@en ] ;
+  wn:example [ rdf:value "they scarcely ever used the emergency generator"@en ] ;
+  wn:example [ rdf:value "I can hardly hear what she is saying"@en ] ;
+  wn:example [ rdf:value "she barely seemed to notice him"@en ] ;
+  wn:example [ rdf:value "we were so far back in the theater, we could barely read the subtitles"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/nascent#nascent-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/nascent#nascent-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/nascent#nascent-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/nascent#nascent-oewn-00003356-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/nascent#nascent-a-lemma>
+    ontolex:writtenRep "nascent"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/nascent#nascent-oewn-00003356-a>
+ wn:antonym <http://wordnet-rdf.princeton.edu/lemma/dying#dying-oewn-00003938-a> ;  wn:derivation <http://wordnet-rdf.princeton.edu/lemma/nascency#nascency-oewn-07334902-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003356-a ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003356-a
+  wn:ili ili:i9 ;
+  wn:partOfSpeech wn:adjective ;
+  dc:subject "adj.all" ;
+  wn:definition [ rdf:value "being born or beginning"@en ] ;
+  wn:similar wnid:oewn-00003552-s ;   wn:similar wnid:oewn-00003699-s ;   wn:similar wnid:oewn-00003828-s ; 
+  wn:example [ rdf:value "the nascent chicks"@en ] ;
+  wn:example [ rdf:value "a nascent insurgency"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/belch#belch-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/belch#belch-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/belch#belch-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/belch#belch-oewn-00003443-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/belch#belch-v-lemma>
+    ontolex:writtenRep "belch"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/bubble#bubble-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/bubble#bubble-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/bubble#bubble-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/bubble#bubble-oewn-00003443-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/bubble#bubble-v-lemma>
+    ontolex:writtenRep "bubble"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/burp#burp-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/burp#burp-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/burp#burp-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/burp#burp-oewn-00003443-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/burp#burp-v-lemma>
+    ontolex:writtenRep "burp"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/eruct#eruct-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/eruct#eruct-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/eruct#eruct-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/eruct#eruct-oewn-00003443-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/eruct#eruct-v-lemma>
+    ontolex:writtenRep "eruct"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/belch#belch-oewn-00003443-v>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/belch#belch-oewn-00118398-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003443-v ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/bubble#bubble-oewn-00003443-v>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/bubble#bubble-oewn-09252616-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003443-v ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/burp#burp-oewn-00003443-v>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/burp#burp-oewn-00118398-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003443-v ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/eruct#eruct-oewn-00003443-v>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/eructation#eructation-oewn-00118398-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003443-v ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003443-v
+  wn:ili ili:i21785 ;
+  wn:partOfSpeech wn:verb ;
+  dc:subject "verb.body" ;
+  wn:definition [ rdf:value "expel gas from the stomach"@en ] ;
+  wn:hypernym wnid:oewn-00105087-v ; 
+  wn:example [ rdf:value "Please don't burp at the table"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/emergent#emergent-s> .
+
+<http://wordnet-rdf.princeton.edu/lemma/emergent#emergent-s>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/emergent#emergent-s-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/emergent#emergent-oewn-00003552-s> ; 
+ wn:partOfSpeech wn:adjective_satellite ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/emergent#emergent-s-lemma>
+    ontolex:writtenRep "emergent"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/emerging#emerging-s> .
+
+<http://wordnet-rdf.princeton.edu/lemma/emerging#emerging-s>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/emerging#emerging-s-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/emerging#emerging-oewn-00003552-s> ; 
+ wn:partOfSpeech wn:adjective_satellite ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/emerging#emerging-s-lemma>
+    ontolex:writtenRep "emerging"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/emergent#emergent-oewn-00003552-s>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/emerge#emerge-oewn-02631097-v> ;  wn:derivation <http://wordnet-rdf.princeton.edu/lemma/emergence#emergence-oewn-00051513-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003552-s ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/emerging#emerging-oewn-00003552-s>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003552-s ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003552-s
+  wn:ili ili:i10 ;
+  wn:partOfSpeech wn:adjective_satellite ;
+  dc:subject "adj.all" ;
+  wn:definition [ rdf:value "coming into existence"@en ] ;
+  wn:similar wnid:oewn-00003356-a ; 
+  wn:example [ rdf:value "an emergent republic"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/unit#unit-n> .
+
+<http://wordnet-rdf.princeton.edu/lemma/unit#unit-n>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/unit#unit-n-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/unit#unit-oewn-00003553-n> ; 
+ wn:partOfSpeech wn:noun ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/unit#unit-n-lemma>
+    ontolex:writtenRep "unit"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/whole#whole-n> .
+
+<http://wordnet-rdf.princeton.edu/lemma/whole#whole-n>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/whole#whole-n-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/whole#whole-oewn-00003553-n> ; 
+ wn:partOfSpeech wn:noun ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/whole#whole-n-lemma>
+    ontolex:writtenRep "whole"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/unit#unit-oewn-00003553-n>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/unify#unify-oewn-01464634-v> ;  wn:derivation <http://wordnet-rdf.princeton.edu/lemma/unify#unify-oewn-00368338-v> ;  wn:derivation <http://wordnet-rdf.princeton.edu/lemma/unitize#unitize-oewn-01388112-v> ;  wn:derivation <http://wordnet-rdf.princeton.edu/lemma/unitize#unitize-oewn-00368762-v> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003553-n ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/whole#whole-oewn-00003553-n>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/whole#whole-oewn-00787771-s> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003553-n ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003553-n
+  wn:ili ili:i35550 ;
+  wn:partOfSpeech wn:noun ;
+  dc:subject "noun.Tops" ;
+  wn:definition [ rdf:value "an assemblage of parts that is regarded as a single entity"@en ] ;
+  wn:hypernym wnid:oewn-00002684-n ;   wn:mero_part wnid:oewn-03898588-n ;   wn:mero_part wnid:oewn-04172050-n ;   wn:hyponym wnid:oewn-00003993-n ;   wn:hyponym wnid:oewn-00004258-n ;   wn:hyponym wnid:oewn-00019308-n ;   wn:hyponym wnid:oewn-00022119-n ;   wn:hyponym wnid:oewn-02752958-n ;   wn:hyponym wnid:oewn-03593583-n ;   wn:hyponym wnid:oewn-04360881-n ; 
+  wn:example [ rdf:value "how big is that part compared to the whole?"@en ] ;
+  wn:example [ rdf:value "the team is a unit"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/force_out#force_out-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/force_out#force_out-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/force_out#force_out-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/force_out#force_out-oewn-00003662-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s something"@en ] ;  synsem:synBehavior [ rdfs:label "Something ----s something"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/force_out#force_out-v-lemma>
+    ontolex:writtenRep "force out"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/force_out#force_out-oewn-00003662-v>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003662-v ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003662-v
+  wn:ili ili:i21786 ;
+  wn:partOfSpeech wn:verb ;
+  dc:subject "verb.body" ;
+  wn:definition [ rdf:value "emit or cause to move with force of effort"@en ] ;
+  wn:hypernym wnid:oewn-00105087-v ; 
+  wn:example [ rdf:value "force out the air"@en ] ;
+  wn:example [ rdf:value "force out the splinter"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/anisotropically#anisotropically-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/anisotropically#anisotropically-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/anisotropically#anisotropically-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/anisotropically#anisotropically-oewn-00003675-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/anisotropically#anisotropically-r-lemma>
+    ontolex:writtenRep "anisotropically"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/anisotropically#anisotropically-oewn-00003675-r>
+ wn:pertainym <http://wordnet-rdf.princeton.edu/lemma/anisotropic#anisotropic-oewn-01364023-a> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003675-r ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003675-r
+  wn:ili ili:i18166 ;
+  wn:partOfSpeech wn:adverb ;
+  dc:subject "adv.all" ;
+  wn:definition [ rdf:value "in an anisotropic manner"@en ] ;
+
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/dissilient#dissilient-s> .
+
+<http://wordnet-rdf.princeton.edu/lemma/dissilient#dissilient-s>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/dissilient#dissilient-s-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/dissilient#dissilient-oewn-00003699-s> ; 
+ wn:partOfSpeech wn:adjective_satellite ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/dissilient#dissilient-s-lemma>
+    ontolex:writtenRep "dissilient"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/dissilient#dissilient-oewn-00003699-s>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/dissilience#dissilience-oewn-07449382-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003699-s ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003699-s
+  wn:ili ili:i11 ;
+  wn:partOfSpeech wn:adjective_satellite ;
+  dc:subject "adj.all" ;
+  wn:definition [ rdf:value "bursting open with force, as do some ripe seed vessels"@en ] ;
+  wn:similar wnid:oewn-00003356-a ; 
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/annoyingly#annoyingly-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/annoyingly#annoyingly-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/annoyingly#annoyingly-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/annoyingly#annoyingly-oewn-00003761-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/annoyingly#annoyingly-r-lemma>
+    ontolex:writtenRep "annoyingly"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/annoyingly#annoyingly-oewn-00003761-r>
+ wn:pertainym <http://wordnet-rdf.princeton.edu/lemma/annoying#annoying-oewn-00090253-s> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003761-r ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003761-r
+  wn:ili ili:i18167 ;
+  wn:partOfSpeech wn:adverb ;
+  dc:subject "adv.all" ;
+  wn:definition [ rdf:value "in an annoying manner or to an annoying degree"@en ] ;
+
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/hiccough#hiccough-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/hiccough#hiccough-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/hiccough#hiccough-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/hiccough#hiccough-oewn-00003826-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/hiccough#hiccough-v-lemma>
+    ontolex:writtenRep "hiccough"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/hiccup#hiccup-v> .
+
+<http://wordnet-rdf.princeton.edu/lemma/hiccup#hiccup-v>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/hiccup#hiccup-v-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/hiccup#hiccup-oewn-00003826-v> ; 
+ synsem:synBehavior [ rdfs:label "Somebody ----s"@en ] ;  wn:partOfSpeech wn:verb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/hiccup#hiccup-v-lemma>
+    ontolex:writtenRep "hiccup"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/hiccough#hiccough-oewn-00003826-v>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/hiccough#hiccough-oewn-14382864-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003826-v ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/hiccup#hiccup-oewn-00003826-v>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/hiccup#hiccup-oewn-14382864-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003826-v ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003826-v
+  wn:ili ili:i21787 ;
+  wn:partOfSpeech wn:verb ;
+  dc:subject "verb.body" ;
+  wn:definition [ rdf:value "breathe spasmodically, and make a sound"@en ] ;
+  wn:hypernym wnid:oewn-00001740-v ; 
+  wn:example [ rdf:value "When you have to hiccup, drink a glass of cold water"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/parturient#parturient-s> .
+
+<http://wordnet-rdf.princeton.edu/lemma/parturient#parturient-s>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/parturient#parturient-s-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/parturient#parturient-oewn-00003828-s> ; 
+ wn:partOfSpeech wn:adjective_satellite ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/parturient#parturient-s-lemma>
+    ontolex:writtenRep "parturient"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/parturient#parturient-oewn-00003828-s>
+ wn:derivation <http://wordnet-rdf.princeton.edu/lemma/parturiency#parturiency-oewn-14071923-n> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003828-s ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003828-s
+  wn:ili ili:i12 ;
+  wn:partOfSpeech wn:adjective_satellite ;
+  dc:subject "adj.all" ;
+  wn:definition [ rdf:value "giving birth"@en ] ;
+  wn:similar wnid:oewn-00003356-a ; 
+  wn:example [ rdf:value "a parturient heifer"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/basically#basically-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/basically#basically-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/basically#basically-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/basically#basically-oewn-00003864-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/basically#basically-r-lemma>
+    ontolex:writtenRep "basically"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/essentially#essentially-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/essentially#essentially-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/essentially#essentially-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/essentially#essentially-oewn-00003864-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/essentially#essentially-r-lemma>
+    ontolex:writtenRep "essentially"@en .
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/fundamentally#fundamentally-r> .
+
+<http://wordnet-rdf.princeton.edu/lemma/fundamentally#fundamentally-r>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/fundamentally#fundamentally-r-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/fundamentally#fundamentally-oewn-00003864-r> ; 
+ wn:partOfSpeech wn:adverb ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/fundamentally#fundamentally-r-lemma>
+    ontolex:writtenRep "fundamentally"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/basically#basically-oewn-00003864-r>
+
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003864-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/essentially#essentially-oewn-00003864-r>
+ wn:pertainym <http://wordnet-rdf.princeton.edu/lemma/essential#essential-oewn-00903909-a> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003864-r ;
+   a ontolex:LexicalSense .
+
+<http://wordnet-rdf.princeton.edu/lemma/fundamentally#fundamentally-oewn-00003864-r>
+ wn:pertainym <http://wordnet-rdf.princeton.edu/lemma/fundamental#fundamental-oewn-01862358-s> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003864-r ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003864-r
+  wn:ili ili:i18168 ;
+  wn:partOfSpeech wn:adverb ;
+  dc:subject "adv.all" ;
+  wn:definition [ rdf:value "in essence; at bottom or by one's (or its) very nature"@en ] ;
+
+  wn:example [ rdf:value "He is basically dishonest"@en ] ;
+  wn:example [ rdf:value "the argument was essentially a technical one"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
+<http://wordnet-rdf.princeton.edu/> lime:entry <http://wordnet-rdf.princeton.edu/lemma/dying#dying-a> .
+
+<http://wordnet-rdf.princeton.edu/lemma/dying#dying-a>
+  ontolex:canonicalForm <http://wordnet-rdf.princeton.edu/lemma/dying#dying-a-lemma> ;
+ ontolex:sense <http://wordnet-rdf.princeton.edu/lemma/dying#dying-oewn-00003938-a> ; 
+ wn:partOfSpeech wn:adjective ;
+  a ontolex:LexicalEntry .  
+<http://wordnet-rdf.princeton.edu/lemma/dying#dying-a-lemma>
+    ontolex:writtenRep "dying"@en .
+
+
+
+<http://wordnet-rdf.princeton.edu/lemma/dying#dying-oewn-00003938-a>
+ wn:antonym <http://wordnet-rdf.princeton.edu/lemma/nascent#nascent-oewn-00003356-a> ; 
+   ontolex:isLexicalizedSenseOf wnid:oewn-00003938-a ;
+   a ontolex:LexicalSense .
+
+
+
+wnid:oewn-00003938-a
+  wn:ili ili:i13 ;
+  wn:partOfSpeech wn:adjective ;
+  dc:subject "adj.all" ;
+  wn:definition [ rdf:value "in or associated with the process of passing from life or ceasing to be"@en ] ;
+  wn:similar wnid:oewn-00004170-s ;   wn:similar wnid:oewn-00004295-s ; 
+  wn:example [ rdf:value "a dying man"@en ] ;
+  wn:example [ rdf:value "his dying wish"@en ] ;
+  wn:example [ rdf:value "a dying fire"@en ] ;
+  wn:example [ rdf:value "a dying civilization"@en ] ;
+
+  a ontolex:LexicalConcept ;
+  skos:inScheme <http://wordnet-rdf.princeton.edu/> .
+
+
+
