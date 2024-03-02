@@ -1,7 +1,7 @@
 <script lang="ts">
-  import { getButtonStyle } from '$lib/themes';
   import { Ranking } from '$lib/rankings';
   import { hostRankingsStore } from '$lib/stores';
+  import Button from '$lib/components/Button.svelte';
 
   let input: HTMLInputElement;
 
@@ -57,4 +57,4 @@
   on:change={importOpticFile}
   hidden
 />
-<label for="optic-import" class={getButtonStyle()}> Import from optic </label>
+<Button on:click={() => input.click()}>Import from optic</Button>
