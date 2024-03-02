@@ -18,7 +18,11 @@
 //!
 //! To be packaged with wasm-pack + vite and served to the browser
 
+use std::collections::HashMap;
+
+use serde::{Deserialize, Serialize};
 use thiserror::Error;
+use tsify::Tsify;
 use wasm_bindgen::prelude::*;
 
 #[derive(Error, Debug)]
@@ -39,30 +43,36 @@ impl From<Error> for JsValue {
     }
 }
 
-#[wasm_bindgen]
-extern "C" {
-    #[wasm_bindgen(js_namespace = console, js_name = log)]
-    fn console_log(s: &str);
+#[derive(Tsify, Serialize, Deserialize)]
+#[tsify(into_wasm_abi, from_wasm_abi)]
+pub struct SiteRankings {
+    pub sites: HashMap<String, Ranking>,
 }
 
-/// WASM Bindings for Optics
-///
-/// Used to prevent recreation of the parsing methods in JS.
-#[wasm_bindgen]
-pub struct Optic;
+#[derive(Clone, Tsify, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub enum Ranking {
+    Liked,
+    Disliked,
+    Blocked,
+}
 
-#[wasm_bindgen]
-impl Optic {
-    /// Takes the contents of a .optic file and converts it to a Result containing either an error or a JSON serialized [`HostRankings`]
-    #[wasm_bindgen(js_name = parsePreferenceOptic)]
-    pub fn parse_preference_optic(contents: JsValue) -> Result<JsValue, Error> {
-        let optic_contents: String = serde_wasm_bindgen::from_value(contents)?;
-        let host_rankings = optics::Optic::parse(&optic_contents)?.host_rankings;
-
-        let rankings_json = serde_json::to_string(&host_rankings)?;
-
-        console_log(&("Parsed rankings to JSON: ".to_owned() + &rankings_json));
-
-        Ok(serde_wasm_bindgen::to_value(&rankings_json)?)
-    }
+/// Takes the contents of a `.optic` file and converts it to a `Result` containing
+/// either an error or [`SiteRankings`]
+#[wasm_bindgen(js_name = parsePreferenceOptic)]
+pub fn site_rankings_from_optic(optic_contents: String) -> Result<SiteRankings, Error> {
+    let optic = optics::Optic::parse(&optic_contents)?;
+    let sites = [
+        (Ranking::Liked, &optic.host_rankings.liked),
+        (Ranking::Disliked, &optic.host_rankings.disliked),
+        (Ranking::Blocked, &optic.host_rankings.blocked),
+    ]
+    .iter()
+    .flat_map(|(ranking, sites)| {
+        sites
+            .iter()
+            .map(move |site| (site.clone(), ranking.clone()))
+    })
+    .collect();
+    Ok(SiteRankings { sites })
 }

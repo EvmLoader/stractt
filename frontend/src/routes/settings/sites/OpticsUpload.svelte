@@ -1,20 +1,19 @@
 <script lang="ts">
   import { getButtonStyle } from '$lib/themes';
-  import { type RankedSites, Ranking } from '$lib/rankings';
+  import { Ranking } from '$lib/rankings';
   import { hostRankingsStore } from '$lib/stores';
 
   let input: HTMLInputElement;
 
-  const rankSite = (site: string, ranking: Ranking) => {
-    hostRankingsStore.update(($rankings) => ({
-      ...$rankings,
-      [site]: ranking,
-    }));
+  const convertRanking: Record<import('client-wasm').Ranking, Ranking> = {
+    liked: Ranking.LIKED,
+    disliked: Ranking.DISLIKED,
+    blocked: Ranking.BLOCKED,
   };
 
   // Called when the user selects an optic file for import
   const importOpticFile = async () => {
-    const { default: init, Optic } = await import('client-wasm');
+    const { default: init, parsePreferenceOptic } = await import('client-wasm');
     // Initialize the wasm module
     await init();
 
@@ -30,14 +29,14 @@
         reader.onload = (readerEvent) => {
           const content = readerEvent.target?.result ?? '';
           try {
-            const extractedRankings: RankedSites = JSON.parse(
-              Optic.parsePreferenceOptic(content as string),
-            );
-            // Iterate through all sites in each Ranking and pass them to rankSite
-            for (const [_, ranking] of Object.entries(Ranking)) {
-              const sites = extractedRankings[ranking];
-              sites.forEach((site) => rankSite(site, ranking));
-            }
+            const siteRankings = parsePreferenceOptic(content as string);
+            const sites = [...siteRankings.sites.entries()];
+            hostRankingsStore.update(($rankings) => ({
+              ...$rankings,
+              ...Object.fromEntries(
+                sites.map(([site, ranking]) => [site, convertRanking[ranking]]),
+              ),
+            }));
           } catch {
             console.error(
               `Failed to import optic from "${file.name}", please check the formatting.`,
