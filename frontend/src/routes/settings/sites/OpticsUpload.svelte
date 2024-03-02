@@ -2,15 +2,8 @@
   import { getButtonStyle } from '$lib/themes';
   import { type RankedSites, Ranking } from '$lib/rankings';
   import { hostRankingsStore } from '$lib/stores';
-  import init, { Optic } from 'client-wasm';
-  import { onMount } from 'svelte';
 
   let input: HTMLInputElement;
-
-  onMount(async () => {
-    // Initialize the wasm module
-    await init();
-  });
 
   const rankSite = (site: string, ranking: Ranking) => {
     hostRankingsStore.update(($rankings) => ({
@@ -20,7 +13,11 @@
   };
 
   // Called when the user selects an optic file for import
-  const importOpticFile = () => {
+  const importOpticFile = async () => {
+    const { default: init, Optic } = await import('client-wasm');
+    // Initialize the wasm module
+    await init();
+
     // Get an array of the uploaded files
     let files: File[] = [...(input.files || new FileList())];
 
