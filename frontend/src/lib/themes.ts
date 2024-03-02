@@ -28,12 +28,18 @@ export type ButtonKind =
   | 'warning'
   | 'error';
 
-export const getButtonTailwindStyle = (
-  padding: boolean,
-  pale: boolean,
-  kind: ButtonKind,
-  _class: string,
-) => {
+export type ButtonStyleProps = {
+  pale?: boolean;
+  padding?: boolean;
+  kind?: ButtonKind;
+  _class?: string;
+};
+export const getButtonStyle = ({
+  pale = false,
+  padding = true,
+  kind = 'primary',
+  _class = '',
+}: ButtonStyleProps = {}) => {
   return twMerge(
     'rounded-full py-2 transition active:scale-[98%]',
     padding ? 'px-4' : 'px-2',
