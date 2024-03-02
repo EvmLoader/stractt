@@ -80,6 +80,7 @@ impl intmap::Key for NodeID {
     serde::Serialize,
     serde::Deserialize,
     ToSchema,
+    tapi::Tapi,
 )]
 #[serde(rename_all = "camelCase")]
 pub struct Node {

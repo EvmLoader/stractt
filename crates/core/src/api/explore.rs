@@ -15,11 +15,10 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 use axum::extract;
-use http::StatusCode;
 use optics::{HostRankings, Optic};
 use utoipa::ToSchema;
 
-#[derive(serde::Deserialize, ToSchema)]
+#[derive(serde::Deserialize, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct ExploreExportOpticParams {
     chosen_hosts: Vec<String>,
@@ -34,12 +33,13 @@ pub struct ExploreExportOpticParams {
         (status = 200, description = "Export explored sites as an optic", body = String),
     )
 )]
+#[tapi::tapi(path = "/expore/export", method = Post)]
 pub async fn explore_export_optic(
     extract::Json(ExploreExportOpticParams {
         chosen_hosts,
         similar_hosts,
     }): extract::Json<ExploreExportOpticParams>,
-) -> Result<String, StatusCode> {
+) -> String {
     let matches = similar_hosts
         .into_iter()
         .chain(chosen_hosts.clone().into_iter())
@@ -69,5 +69,5 @@ pub async fn explore_export_optic(
         ..Default::default()
     };
 
-    Ok(optic.to_string())
+    optic.to_string()
 }

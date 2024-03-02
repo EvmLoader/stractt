@@ -55,7 +55,13 @@ pub trait Signal:
 #[derive(
     Debug, serde::Serialize, serde::Deserialize, Clone, Copy, PartialEq, Eq, Hash, EnumDiscriminants,
 )]
-#[strum_discriminants(derive(VariantArray, serde::Serialize, serde::Deserialize, Hash))]
+#[strum_discriminants(derive(
+    VariantArray,
+    serde::Serialize,
+    serde::Deserialize,
+    Hash,
+    tapi::Tapi
+))]
 #[strum_discriminants(serde(rename_all = "snake_case"))]
 pub enum SignalEnum {
     Bm25Title,

@@ -26,6 +26,9 @@ use crate::{
 };
 
 pub async fn run(config: config::ApiConfig) -> Result<()> {
+    let endpoints = crate::api::endpoints();
+    println!("{}", endpoints.ts_client());
+
     let search_counter_success = crate::metrics::Counter::default();
     let search_counter_fail = crate::metrics::Counter::default();
     let explore_counter = crate::metrics::Counter::default();

@@ -14,15 +14,13 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use std::{collections::HashMap, sync::Arc};
-
-use axum::{extract, response::IntoResponse, Json};
+use axum::{extract, Json};
 use serde::Serialize;
 use utoipa::{IntoParams, ToSchema};
 
 use crate::highlighted::HighlightedFragment;
 
-use super::State;
+use super::AppState;
 
 fn highlight(query: &str, suggestion: &str) -> Vec<HighlightedFragment> {
     let idx = suggestion
@@ -42,17 +40,17 @@ fn highlight(query: &str, suggestion: &str) -> Vec<HighlightedFragment> {
     new_suggestion
 }
 
-#[derive(Serialize, ToSchema)]
+#[derive(Serialize, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct Suggestion {
     highlighted: Vec<HighlightedFragment>,
     raw: String,
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, IntoParams)]
+#[derive(Debug, serde::Serialize, serde::Deserialize, IntoParams, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct AutosuggestQuery {
-    q: String,
+    q: Option<String>,
 }
 
 #[utoipa::path(
@@ -63,12 +61,12 @@ pub struct AutosuggestQuery {
         (status = 200, description = "Autosuggest", body = Vec<Suggestion>),
     )
 )]
-
+#[tapi::tapi(path = "/autosuggest", method = Post, state = AppState)]
 pub async fn route(
-    extract::State(state): extract::State<Arc<State>>,
-    extract::Query(params): extract::Query<HashMap<String, String>>,
-) -> impl IntoResponse {
-    if let Some(query) = params.get("q") {
+    extract::State(state): extract::State<AppState>,
+    extract::Query(params): extract::Query<AutosuggestQuery>,
+) -> Json<Vec<Suggestion>> {
+    if let Some(query) = &params.q {
         let mut suggestions = Vec::new();
 
         for suggestion in state.autosuggest.suggestions(query).unwrap() {
@@ -85,11 +83,12 @@ pub async fn route(
     }
 }
 
+#[tapi::tapi(path = "/autosuggest/browser", method = Post, state = AppState)]
 pub async fn browser(
-    extract::State(state): extract::State<Arc<State>>,
-    extract::Query(params): extract::Query<HashMap<String, String>>,
-) -> impl IntoResponse {
-    if let Some(query) = params.get("q") {
+    extract::State(state): extract::State<AppState>,
+    extract::Query(params): extract::Query<AutosuggestQuery>,
+) -> Json<(String, Vec<String>)> {
+    if let Some(query) = &params.q {
         Json((query.clone(), state.autosuggest.suggestions(query).unwrap()))
     } else {
         Json((String::new(), Vec::new()))

@@ -30,7 +30,7 @@ use crate::query::parser::Term;
 
 pub const BANG_PREFIXES: [char; 2] = ['!', '！'];
 
-#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize, ToSchema)]
+#[derive(Clone, Debug, PartialEq, Eq, Serialize, Deserialize, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct Bang {
     #[serde(rename = "c")]
@@ -60,6 +60,16 @@ pub struct Bang {
 #[schema(value_type = String, title = "Url")]
 pub struct UrlWrapper(Url);
 
+impl tapi::Tapi for UrlWrapper {
+    fn name() -> &'static str {
+        "Url"
+    }
+
+    fn kind() -> tapi::kind::TypeKind {
+        tapi::kind::TypeKind::Builtin(tapi::kind::BuiltinTypeKind::String)
+    }
+}
+
 impl DerefMut for UrlWrapper {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.0
@@ -80,7 +90,7 @@ impl From<Url> for UrlWrapper {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, PartialEq, Eq, Clone, ToSchema)]
+#[derive(Debug, Serialize, Deserialize, PartialEq, Eq, Clone, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct BangHit {
     pub bang: Bang,

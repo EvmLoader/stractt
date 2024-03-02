@@ -16,14 +16,14 @@
 
 use utoipa::ToSchema;
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize, PartialEq, ToSchema)]
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize, PartialEq, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub enum HighlightedKind {
     Normal,
     Highlighted,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize, PartialEq, ToSchema)]
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize, PartialEq, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct HighlightedFragment {
     pub kind: HighlightedKind,

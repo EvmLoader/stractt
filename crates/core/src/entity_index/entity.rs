@@ -94,14 +94,16 @@ pub struct Link {
     pub target: String,
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize, PartialEq, ToSchema)]
+#[derive(Debug, Clone, serde::Serialize, serde::Deserialize, PartialEq, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase", tag = "kind")]
 pub enum EntitySnippetFragment {
     Normal { text: String },
     Link { text: String, href: String },
 }
 
-#[derive(Default, Debug, Clone, serde::Serialize, serde::Deserialize, PartialEq, ToSchema)]
+#[derive(
+    Default, Debug, Clone, serde::Serialize, serde::Deserialize, PartialEq, ToSchema, tapi::Tapi,
+)]
 #[serde(rename_all = "camelCase")]
 pub struct EntitySnippet {
     pub fragments: Vec<EntitySnippetFragment>,

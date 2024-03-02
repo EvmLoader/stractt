@@ -38,14 +38,14 @@ pub use entity::DisplayedEntity;
 
 pub use self::stack_overflow::{stackoverflow_snippet, StackOverflowAnswer, StackOverflowQuestion};
 
-#[derive(Debug, Serialize, Deserialize, Clone, ToSchema)]
+#[derive(Debug, Serialize, Deserialize, Clone, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct Snippet {
     pub date: Option<String>,
     pub text: TextSnippet,
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, ToSchema)]
+#[derive(Debug, Serialize, Deserialize, Clone, ToSchema, tapi::Tapi)]
 #[serde(tag = "type", rename_all = "camelCase")]
 pub enum RichSnippet {
     StackOverflowQA {
@@ -54,7 +54,7 @@ pub enum RichSnippet {
     },
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, ToSchema)]
+#[derive(Debug, Serialize, Deserialize, Clone, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct HighlightedSpellCorrection {
     pub raw: String,
@@ -169,7 +169,7 @@ fn generate_rich_snippet(webpage: &RetrievedWebpage) -> Option<RichSnippet> {
     None
 }
 
-#[derive(Debug, Serialize, Deserialize, ToSchema)]
+#[derive(Debug, Serialize, Deserialize, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct DisplayedWebpage {
     pub title: String,
@@ -185,7 +185,7 @@ pub struct DisplayedWebpage {
     pub likely_has_paywall: bool,
 }
 
-#[derive(Debug, Serialize, Deserialize, ToSchema)]
+#[derive(Debug, Serialize, Deserialize, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct DisplayedAnswer {
     pub title: String,
@@ -220,7 +220,7 @@ impl From<RetrievedWebpage> for DisplayedWebpage {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, Clone, ToSchema)]
+#[derive(Debug, Serialize, Deserialize, Clone, ToSchema, tapi::Tapi)]
 #[serde(tag = "type", content = "value", rename_all = "camelCase")]
 pub enum DisplayedSidebar {
     Entity(DisplayedEntity),

@@ -72,6 +72,7 @@ pub struct Counters {
     pub daily_active_users: user_count::UserCount<user_count::Daily>,
 }
 
+pub type AppState = Arc<State>;
 pub struct State {
     pub config: ApiConfig,
     pub searcher: ApiSearcher<DistributedSearcher, LiveSearcher>,
@@ -222,6 +223,32 @@ pub async fn router(config: &ApiConfig, counters: Counters) -> Result<Router> {
     Ok(build_router(state))
 }
 
+pub fn endpoints() -> tapi::endpoints::Endpoints<'static, AppState> {
+    type E = &'static dyn tapi::endpoints::Endpoint<AppState>;
+
+    tapi::endpoints::Endpoints::new([
+        &autosuggest::browser::endpoint as E,
+        &autosuggest::route::endpoint as E,
+        &explore::explore_export_optic::endpoint as E,
+        // &favicon::endpoint as E,
+        &hosts::hosts_export_optic::endpoint as E,
+        // &improvement::click::endpoint as E,
+        // &improvement::store::endpoint as E,
+        // &search::entity_image::endpoint as E,
+        &search::search::endpoint as E,
+        &search::sidebar::endpoint as E,
+        &search::spellcheck::endpoint as E,
+        &search::widget::endpoint as E,
+        // &summarize::summarize_route::endpoint as E,
+        &webgraph::host::ingoing_hosts::endpoint as E,
+        &webgraph::host::knows::endpoint as E,
+        &webgraph::host::outgoing_hosts::endpoint as E,
+        &webgraph::host::similar::endpoint as E,
+        &webgraph::page::ingoing_pages::endpoint as E,
+        &webgraph::page::outgoing_pages::endpoint as E,
+    ])
+}
+
 /// Enables CORS for development where the API and frontend are on
 /// different hosts.
 fn cors_layer() -> tower_http::cors::CorsLayer {
@@ -238,7 +265,7 @@ pub fn metrics_router(registry: crate::metrics::PrometheusRegistry) -> Router {
 }
 
 async fn search_metric(
-    extract::State(state): extract::State<Arc<State>>,
+    extract::State(state): extract::State<AppState>,
     extract::ConnectInfo(addr): extract::ConnectInfo<SocketAddr>,
     request: axum::extract::Request,
     next: middleware::Next,

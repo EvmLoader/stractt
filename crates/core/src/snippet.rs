@@ -47,7 +47,9 @@ struct PassageCandidate {
     doc_terms: HashMap<String, u64>,
 }
 
-#[derive(Default, Debug, Clone, serde::Serialize, serde::Deserialize, PartialEq, ToSchema)]
+#[derive(
+    Default, Debug, Clone, serde::Serialize, serde::Deserialize, PartialEq, ToSchema, tapi::Tapi,
+)]
 #[serde(rename_all = "camelCase")]
 pub struct TextSnippet {
     pub fragments: Vec<HighlightedFragment>,

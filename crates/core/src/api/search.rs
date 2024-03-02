@@ -17,7 +17,6 @@
 use crate::config::defaults;
 use http::StatusCode;
 use optics::{HostRankings, Optic};
-use std::sync::Arc;
 use utoipa::ToSchema;
 
 use axum::Json;
@@ -29,11 +28,11 @@ use crate::{
     webpage::region::Region,
 };
 
-use super::State;
+use super::AppState;
 
 use axum::{extract, response::IntoResponse};
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, ToSchema)]
+#[derive(Debug, serde::Serialize, serde::Deserialize, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 #[schema(title = "SearchQuery", example = json!({"query": "hello world"}))]
 pub struct ApiSearchQuery {
@@ -81,7 +80,7 @@ impl TryFrom<ApiSearchQuery> for SearchQuery {
     }
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, ToSchema)]
+#[derive(Debug, serde::Serialize, serde::Deserialize, ToSchema, tapi::Tapi)]
 #[serde(tag = "type", rename_all = "camelCase")]
 pub enum ApiSearchResult {
     Websites(WebsitesResult),
@@ -106,17 +105,24 @@ impl From<SearchResult> for ApiSearchResult {
         (status = 200, description = "Search results", body = ApiSearchResult),
     )
 )]
+#[tapi::tapi(path = "/search", method = Post, state = AppState)]
 pub async fn search(
-    extract::State(state): extract::State<Arc<State>>,
+    extract::State(state): extract::State<AppState>,
     extract::Json(query): extract::Json<ApiSearchQuery>,
-) -> Result<impl IntoResponse, StatusCode> {
+) -> tapi::endpoints::OneOf5<
+    extract::Json<ApiSearchResult>,
+    extract::Json<SearchResult>,
+    String,
+    tapi::endpoints::Statused<400, ()>,
+    tapi::endpoints::Statused<500, ()>,
+> {
     tracing::debug!(?query);
     let flatten_result = query.flatten_response;
     let query = SearchQuery::try_from(query);
 
     if let Err(err) = query {
         tracing::error!("{:?}", err);
-        return Err(StatusCode::BAD_REQUEST);
+        return tapi::endpoints::OneOf5::D(().into());
     }
     let mut query = query.unwrap();
 
@@ -125,27 +131,25 @@ pub async fn search(
     match state.searcher.search(&query).await {
         Ok(result) => {
             if flatten_result {
-                Ok(Json(ApiSearchResult::from(result)).into_response())
+                tapi::endpoints::OneOf5::A(Json(ApiSearchResult::from(result)))
             } else {
-                Ok(Json(result).into_response())
+                tapi::endpoints::OneOf5::B(Json(result))
             }
         }
 
         Err(err) => match err.downcast_ref() {
             Some(searcher::distributed::Error::EmptyQuery) => {
-                Ok(searcher::distributed::Error::EmptyQuery
-                    .to_string()
-                    .into_response())
+                tapi::endpoints::OneOf5::C(searcher::distributed::Error::EmptyQuery.to_string())
             }
             _ => {
                 tracing::error!("{:?}", err);
-                Err(StatusCode::INTERNAL_SERVER_ERROR)
+                tapi::endpoints::OneOf5::E(().into())
             }
         },
     }
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, ToSchema)]
+#[derive(Debug, serde::Serialize, serde::Deserialize, ToSchema, tapi::Tapi)]
 pub struct WidgetQuery {
     pub query: String,
 }
@@ -159,14 +163,15 @@ pub struct WidgetQuery {
         (status = 200, description = "The resulting widget if one matches the query", body = Option<Widget>),
     )
 )]
+#[tapi::tapi(path = "/search/widget", method = Post, state = AppState)]
 pub async fn widget(
-    extract::State(state): extract::State<Arc<State>>,
+    extract::State(state): extract::State<AppState>,
     extract::Json(req): extract::Json<WidgetQuery>,
-) -> impl IntoResponse {
+) -> extract::Json<Option<crate::widgets::Widget>> {
     Json(state.searcher.widget(&req.query).await)
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, ToSchema)]
+#[derive(Debug, serde::Serialize, serde::Deserialize, ToSchema, tapi::Tapi)]
 pub struct SidebarQuery {
     pub query: String,
 }
@@ -180,14 +185,15 @@ pub struct SidebarQuery {
         (status = 200, description = "The sidebar if one matches the query", body = Option<DisplayedSidebar>),
     )
 )]
+#[tapi::tapi(path = "/search/sidebar", method = Post, state = AppState)]
 pub async fn sidebar(
-    extract::State(state): extract::State<Arc<State>>,
+    extract::State(state): extract::State<AppState>,
     extract::Json(req): extract::Json<SidebarQuery>,
-) -> impl IntoResponse {
+) -> Json<Option<crate::search_prettifier::DisplayedSidebar>> {
     Json(state.searcher.sidebar(&req.query).await)
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, ToSchema)]
+#[derive(Debug, serde::Serialize, serde::Deserialize, ToSchema, tapi::Tapi)]
 pub struct SpellcheckQuery {
     pub query: String,
 }
@@ -201,14 +207,15 @@ pub struct SpellcheckQuery {
         (status = 200, description = "The corrected string with the changes highlighted using <b>...<\\b> elements. Returns empty response if there is no correction to be made.", body = Option<HighlightedSpellCorrection>),
     )
 )]
+#[tapi::tapi(path = "/search/spellcheck", method = Post, state = AppState)]
 pub async fn spellcheck(
-    extract::State(state): extract::State<Arc<State>>,
+    extract::State(state): extract::State<AppState>,
     extract::Json(req): extract::Json<SpellcheckQuery>,
-) -> impl IntoResponse {
+) -> Json<Option<crate::search_prettifier::HighlightedSpellCorrection>> {
     Json(state.searcher.spell_check(&req.query))
 }
 
-#[derive(Debug, serde::Serialize, serde::Deserialize, ToSchema)]
+#[derive(Debug, serde::Serialize, serde::Deserialize, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct EntityImageParams {
     pub image_id: String,
@@ -224,9 +231,11 @@ pub struct EntityImageParams {
         (status = 200, description = "Search results", body = ApiSearchResult),
     )
 )]
+// TODO
+// #[tapi::tapi(path = "/entity_image", method = Post, state = AppState)]
 pub async fn entity_image(
     extract::Query(query): extract::Query<EntityImageParams>,
-    extract::State(state): extract::State<Arc<State>>,
+    extract::State(state): extract::State<AppState>,
 ) -> Result<impl IntoResponse, StatusCode> {
     match state
         .searcher

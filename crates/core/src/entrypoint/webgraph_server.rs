@@ -42,7 +42,7 @@ use crate::webgraph::Webgraph;
 use crate::webgraph::WebgraphBuilder;
 use crate::Result;
 
-#[derive(serde::Serialize, serde::Deserialize, ToSchema)]
+#[derive(serde::Serialize, serde::Deserialize, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct ScoredHost {
     pub host: String,

@@ -15,7 +15,6 @@
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
 use std::convert::Infallible;
-use std::sync::Arc;
 
 use axum::extract;
 use axum::response::sse::KeepAlive;
@@ -26,7 +25,7 @@ use serde::Deserialize;
 use tokio_stream::StreamExt as _;
 use utoipa::IntoParams;
 
-use super::State;
+use super::AppState;
 use crate::Result;
 
 #[derive(Deserialize, Debug, IntoParams)]
@@ -37,7 +36,7 @@ pub struct SummarizeParams {
 
 async fn summarize(
     params: SummarizeParams,
-    state: Arc<State>,
+    state: AppState,
 ) -> Result<Sse<impl Stream<Item = std::result::Result<Event, Infallible>>>> {
     let webpage = state
         .searcher
@@ -70,7 +69,7 @@ async fn summarize(
 )]
 pub async fn summarize_route(
     extract::Query(params): extract::Query<SummarizeParams>,
-    extract::State(state): extract::State<Arc<State>>,
+    extract::State(state): extract::State<AppState>,
 ) -> std::result::Result<Sse<impl Stream<Item = std::result::Result<Event, Infallible>>>, StatusCode>
 {
     // err might actually happen if url contains more than 255 tokens

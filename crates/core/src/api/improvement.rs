@@ -14,8 +14,6 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use std::sync::Arc;
-
 use axum::{extract, response::IntoResponse};
 use serde::Deserialize;
 use url::Url;
@@ -23,7 +21,7 @@ use uuid::Uuid;
 
 use crate::improvement::{ImprovementEvent, StoredQuery};
 
-use super::State;
+use super::AppState;
 
 #[derive(Deserialize, Debug)]
 pub struct ClickParams {
@@ -39,7 +37,7 @@ pub struct StoreParams {
 
 pub async fn click(
     extract::Query(params): extract::Query<ClickParams>,
-    extract::State(state): extract::State<Arc<State>>,
+    extract::State(state): extract::State<AppState>,
 ) {
     if let Some(q) = state.improvement_queue.as_ref() {
         q.lock().await.push(ImprovementEvent::Click {
@@ -62,7 +60,7 @@ impl TryFrom<StoreParams> for StoredQuery {
 }
 
 pub async fn store(
-    extract::State(state): extract::State<Arc<State>>,
+    extract::State(state): extract::State<AppState>,
     extract::Json(params): extract::Json<StoreParams>,
 ) -> impl IntoResponse {
     match state.improvement_queue.as_ref() {

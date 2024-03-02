@@ -98,6 +98,7 @@ serde_json = "1.0.81"
 serde_urlencoded = "0.7.1"
 strum = { version = "0.26.2", features = ["derive"] }
 tantivy = { git = "https://github.com/quickwit-oss/tantivy", rev = "182f58cea" }
+tapi = { path = "../tapi/crates/tapi/", package = "tapi", features = ["openapi"] }
 thiserror = "1.0.31"
 tikv-jemallocator = "0.5"
 tokenizers = "0.13.2"

@@ -14,16 +14,11 @@
 // You should have received a copy of the GNU Affero General Public License
 // along with this program.  If not, see <https://www.gnu.org/licenses/>.
 
-use axum::{
-    body::Body,
-    extract,
-    response::{IntoResponse, Response},
-};
-use http::StatusCode;
+use axum::{extract, Json};
 use optics::{HostRankings, Optic};
 use utoipa::ToSchema;
 
-#[derive(serde::Deserialize, ToSchema)]
+#[derive(serde::Deserialize, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct HostsExportOpticParams {
     host_rankings: HostRankings,
@@ -36,13 +31,14 @@ pub struct HostsExportOpticParams {
         (status = 200, description = "Export host rankings as an optic", body = String),
     )
 )]
+#[tapi::tapi(path = "/hosts/export", method = Post)]
 pub async fn hosts_export_optic(
     extract::Json(HostsExportOpticParams { host_rankings }): extract::Json<HostsExportOpticParams>,
-) -> Result<Response<Body>, StatusCode> {
+) -> Json<String> {
     let optic = Optic {
         host_rankings,
         ..Default::default()
     };
 
-    Ok(optic.to_string().into_response())
+    Json(optic.to_string())
 }

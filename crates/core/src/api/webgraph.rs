@@ -16,8 +16,7 @@
 
 use std::{net::SocketAddr, sync::Arc, time::Duration};
 
-use axum::{extract, response::IntoResponse, Json};
-use http::StatusCode;
+use axum::{extract, Json};
 use utoipa::{IntoParams, ToSchema};
 
 use crate::{
@@ -26,7 +25,7 @@ use crate::{
     webgraph::{FullEdge, Node},
 };
 
-use super::State;
+use super::AppState;
 
 pub struct RemoteWebgraph {
     cluster: Arc<Cluster>,
@@ -52,22 +51,24 @@ impl RemoteWebgraph {
 pub mod host {
     use url::Url;
 
+    use crate::entrypoint::webgraph_server::ScoredHost;
+
     use super::*;
 
-    #[derive(serde::Deserialize, ToSchema)]
+    #[derive(serde::Deserialize, ToSchema, tapi::Tapi)]
     #[serde(rename_all = "camelCase")]
     pub struct SimilarHostsParams {
         pub hosts: Vec<String>,
         pub top_n: usize,
     }
 
-    #[derive(serde::Deserialize, IntoParams)]
+    #[derive(serde::Deserialize, IntoParams, tapi::Tapi)]
     #[serde(rename_all = "camelCase")]
     pub struct KnowsHostParams {
         pub host: String,
     }
 
-    #[derive(serde::Deserialize, IntoParams)]
+    #[derive(serde::Deserialize, IntoParams, tapi::Tapi)]
     #[serde(rename_all = "camelCase")]
     pub struct HostLinksParams {
         pub host: String,
@@ -80,28 +81,29 @@ pub mod host {
             (status = 200, description = "List of similar hosts", body = Vec<ScoredHost>),
         )
     )]
+    #[tapi::tapi(path = "/host/similar", method = Post, state = AppState)]
     pub async fn similar(
-        extract::State(state): extract::State<Arc<State>>,
+        extract::State(state): extract::State<AppState>,
         extract::Json(params): extract::Json<SimilarHostsParams>,
-    ) -> std::result::Result<impl IntoResponse, StatusCode> {
+    ) -> tapi::endpoints::OneOf2<Json<Vec<ScoredHost>>, tapi::endpoints::Statused<500, ()>> {
         state.counters.explore_counter.inc();
-        let host = state
-            .remote_webgraph
-            .host(WebgraphGranularity::Host)
-            .await
-            .ok_or(StatusCode::INTERNAL_SERVER_ERROR)?;
+        let Some(host) = state.remote_webgraph.host(WebgraphGranularity::Host).await else {
+            return tapi::endpoints::OneOf2::B(().into());
+        };
 
         let retry = ExponentialBackoff::from_millis(30)
             .with_limit(Duration::from_millis(200))
             .take(5);
 
-        let conn = sonic::service::Connection::create_with_timeout_retry(
+        let Ok(conn) = sonic::service::Connection::create_with_timeout_retry(
             host,
             Duration::from_secs(30),
             retry,
         )
         .await
-        .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
+        else {
+            return tapi::endpoints::OneOf2::B(().into());
+        };
 
         match conn
             .send_with_timeout(
@@ -113,10 +115,10 @@ pub mod host {
             )
             .await
         {
-            Ok(nodes) => Ok(Json(nodes)),
+            Ok(nodes) => tapi::endpoints::OneOf2::A(Json(nodes)),
             Err(err) => {
                 tracing::error!("Failed to send request to webgraph: {}", err);
-                Err(StatusCode::INTERNAL_SERVER_ERROR)
+                tapi::endpoints::OneOf2::B(().into())
             }
         }
     }
@@ -128,44 +130,46 @@ pub mod host {
             (status = 200, description = "Whether the host is known", body = KnowsHost),
         )
     )]
+    #[tapi::tapi(path = "/host/knows", method = Post, state = AppState)]
     pub async fn knows(
-        extract::State(state): extract::State<Arc<State>>,
+        extract::State(state): extract::State<AppState>,
         extract::Query(params): extract::Query<KnowsHostParams>,
-    ) -> std::result::Result<impl IntoResponse, StatusCode> {
-        let host = state
-            .remote_webgraph
-            .host(WebgraphGranularity::Host)
-            .await
-            .ok_or(StatusCode::INTERNAL_SERVER_ERROR)?;
+    ) -> tapi::endpoints::OneOf2<Json<KnowsHost>, tapi::endpoints::Statused<500, ()>> {
+        let Some(host) = state.remote_webgraph.host(WebgraphGranularity::Host).await else {
+            return tapi::endpoints::OneOf2::B(().into());
+        };
 
         let retry = ExponentialBackoff::from_millis(30)
             .with_limit(Duration::from_millis(200))
             .take(5);
 
-        let conn = sonic::service::Connection::create_with_timeout_retry(
+        let Ok(conn) = sonic::service::Connection::create_with_timeout_retry(
             host,
             Duration::from_secs(30),
             retry,
         )
         .await
-        .map_err(|_| StatusCode::INTERNAL_SERVER_ERROR)?;
+        else {
+            return tapi::endpoints::OneOf2::B(().into());
+        };
 
-        match conn
+        let response = match conn
             .send_with_timeout(
                 &crate::entrypoint::webgraph_server::Knows { host: params.host },
                 Duration::from_secs(60),
             )
             .await
         {
-            Ok(Some(node)) => Ok(Json(KnowsHost::Known {
+            Ok(Some(node)) => Json(KnowsHost::Known {
                 host: node.as_str().to_string(),
-            })),
+            }),
             Err(err) => {
                 tracing::error!("Failed to send request to webgraph: {}", err);
-                Ok(Json(KnowsHost::Unknown))
+                Json(KnowsHost::Unknown)
             }
-            _ => Ok(Json(KnowsHost::Unknown)),
-        }
+            _ => Json(KnowsHost::Unknown),
+        };
+        tapi::endpoints::OneOf2::A(response)
     }
 
     #[utoipa::path(post,
@@ -175,21 +179,21 @@ pub mod host {
             (status = 200, description = "Incoming links for a particular host", body = Vec<FullEdge>),
         )
     )]
+    #[tapi::tapi(path = "/host/ingoing", method = Post, state = AppState)]
     pub async fn ingoing_hosts(
-        extract::State(state): extract::State<Arc<State>>,
+        extract::State(state): extract::State<AppState>,
         extract::Query(params): extract::Query<HostLinksParams>,
-    ) -> std::result::Result<impl IntoResponse, StatusCode> {
-        let url = Url::parse(&("http://".to_string() + params.host.as_str()))
-            .map_err(|_| StatusCode::BAD_REQUEST)?;
+    ) -> tapi::endpoints::OneOf2<Json<Vec<FullEdge>>, tapi::endpoints::Statused<500, ()>> {
+        let Ok(url) = Url::parse(&("http://".to_string() + params.host.as_str())) else {
+            return tapi::endpoints::OneOf2::B(().into());
+        };
         let node = Node::from(url).into_host();
-        let links = ingoing_links(state, node, WebgraphGranularity::Host)
-            .await
-            .map_err(|_| {
-                tracing::error!("Failed to send request to webgraph");
-                StatusCode::INTERNAL_SERVER_ERROR
-            })?;
+        let Ok(links) = ingoing_links(state, node, WebgraphGranularity::Host).await else {
+            tracing::error!("Failed to send request to webgraph");
+            return tapi::endpoints::OneOf2::B(().into());
+        };
 
-        Ok(Json(links))
+        tapi::endpoints::OneOf2::A(Json(links))
     }
 
     #[utoipa::path(post,
@@ -199,28 +203,28 @@ pub mod host {
             (status = 200, description = "Outgoing links for a particular host", body = Vec<FullEdge>),
         )
     )]
+    #[tapi::tapi(path = "/host/outgoing", method = Post, state = AppState)]
     pub async fn outgoing_hosts(
-        extract::State(state): extract::State<Arc<State>>,
+        extract::State(state): extract::State<AppState>,
         extract::Query(params): extract::Query<HostLinksParams>,
-    ) -> std::result::Result<impl IntoResponse, StatusCode> {
-        let url = Url::parse(&("http://".to_string() + params.host.as_str()))
-            .map_err(|_| StatusCode::BAD_REQUEST)?;
+    ) -> tapi::endpoints::OneOf2<Json<Vec<FullEdge>>, tapi::endpoints::Statused<500, ()>> {
+        let Ok(url) = Url::parse(&("http://".to_string() + params.host.as_str())) else {
+            return tapi::endpoints::OneOf2::B(().into());
+        };
         let node = Node::from(url).into_host();
-        let links = outgoing_links(state, node, WebgraphGranularity::Host)
-            .await
-            .map_err(|_| {
-                tracing::error!("Failed to send request to webgraph");
-                StatusCode::INTERNAL_SERVER_ERROR
-            })?;
+        let Ok(links) = outgoing_links(state, node, WebgraphGranularity::Host).await else {
+            tracing::error!("Failed to send request to webgraph");
+            return tapi::endpoints::OneOf2::B(().into());
+        };
 
-        Ok(Json(links))
+        tapi::endpoints::OneOf2::A(Json(links))
     }
 }
 
 pub mod page {
     use super::*;
 
-    #[derive(serde::Deserialize, IntoParams)]
+    #[derive(serde::Deserialize, IntoParams, tapi::Tapi)]
     #[serde(rename_all = "camelCase")]
     pub struct PageLinksParams {
         pub page: String,
@@ -233,19 +237,18 @@ pub mod page {
             (status = 200, description = "Incoming links for a particular page", body = Vec<FullEdge>),
         )
     )]
+    #[tapi::tapi(path = "/page/ingoing", method = Post, state = AppState)]
     pub async fn ingoing_pages(
-        extract::State(state): extract::State<Arc<State>>,
+        extract::State(state): extract::State<AppState>,
         extract::Query(params): extract::Query<PageLinksParams>,
-    ) -> std::result::Result<impl IntoResponse, StatusCode> {
+    ) -> tapi::endpoints::OneOf2<Json<Vec<FullEdge>>, tapi::endpoints::Statused<500, ()>> {
         let node = Node::from(params.page);
-        let links = ingoing_links(state, node, WebgraphGranularity::Page)
-            .await
-            .map_err(|_| {
-                tracing::error!("Failed to send request to webgraph");
-                StatusCode::INTERNAL_SERVER_ERROR
-            })?;
+        let Ok(links) = ingoing_links(state, node, WebgraphGranularity::Page).await else {
+            tracing::error!("Failed to send request to webgraph");
+            return tapi::endpoints::OneOf2::B(().into());
+        };
 
-        Ok(Json(links))
+        tapi::endpoints::OneOf2::A(Json(links))
     }
 
     #[utoipa::path(post,
@@ -255,24 +258,23 @@ pub mod page {
             (status = 200, description = "Outgoing links for a particular page", body = Vec<FullEdge>),
         )
     )]
+    #[tapi::tapi(path = "/page/outgoing", method = Post, state = AppState)]
     pub async fn outgoing_pages(
-        extract::State(state): extract::State<Arc<State>>,
+        extract::State(state): extract::State<AppState>,
         extract::Query(params): extract::Query<PageLinksParams>,
-    ) -> std::result::Result<impl IntoResponse, StatusCode> {
+    ) -> tapi::endpoints::OneOf2<Json<Vec<FullEdge>>, tapi::endpoints::Statused<500, ()>> {
         let node = Node::from(params.page);
-        let links = outgoing_links(state, node, WebgraphGranularity::Page)
-            .await
-            .map_err(|_| {
-                tracing::error!("Failed to send request to webgraph");
-                StatusCode::INTERNAL_SERVER_ERROR
-            })?;
+        let Ok(links) = outgoing_links(state, node, WebgraphGranularity::Page).await else {
+            tracing::error!("Failed to send request to webgraph");
+            return tapi::endpoints::OneOf2::B(().into());
+        };
 
-        Ok(Json(links))
+        tapi::endpoints::OneOf2::A(Json(links))
     }
 }
 
 async fn ingoing_links(
-    state: Arc<State>,
+    state: AppState,
     node: Node,
     level: WebgraphGranularity,
 ) -> anyhow::Result<Vec<FullEdge>> {
@@ -301,7 +303,7 @@ async fn ingoing_links(
 }
 
 async fn outgoing_links(
-    state: Arc<State>,
+    state: AppState,
     node: Node,
     level: WebgraphGranularity,
 ) -> anyhow::Result<Vec<FullEdge>> {
@@ -329,7 +331,7 @@ async fn outgoing_links(
         .await?)
 }
 
-#[derive(serde::Serialize, serde::Deserialize, ToSchema)]
+#[derive(serde::Serialize, serde::Deserialize, ToSchema, tapi::Tapi)]
 #[serde(tag = "type", rename_all = "camelCase")]
 pub enum KnowsHost {
     Known { host: String },

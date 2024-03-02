@@ -81,7 +81,9 @@ where
     }
 }
 
-#[derive(Debug, Clone, serde::Serialize, serde::Deserialize, PartialEq, Eq, Hash, ToSchema)]
+#[derive(
+    Debug, Clone, serde::Serialize, serde::Deserialize, PartialEq, Eq, Hash, ToSchema, tapi::Tapi,
+)]
 #[serde(rename_all = "camelCase")]
 pub struct FullEdge {
     pub from: Node,

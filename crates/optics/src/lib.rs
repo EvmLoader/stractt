@@ -411,7 +411,7 @@ impl Display for Rule {
     }
 }
 
-#[derive(Debug, PartialEq, Default, Serialize, Deserialize, Clone, ToSchema)]
+#[derive(Debug, PartialEq, Default, Serialize, Deserialize, Clone, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct HostRankings {
     pub liked: Vec<String>,

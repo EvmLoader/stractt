@@ -81,7 +81,7 @@ impl Widgets {
     }
 }
 
-#[derive(Debug, Serialize, Deserialize, ToSchema)]
+#[derive(Debug, Serialize, Deserialize, ToSchema, tapi::Tapi)]
 #[serde(tag = "type", content = "value", rename_all = "camelCase")]
 pub enum Widget {
     Calculator(Calculation),

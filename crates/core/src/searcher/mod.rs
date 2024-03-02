@@ -32,13 +32,13 @@ use crate::{
 
 pub const NUM_RESULTS_PER_PAGE: usize = 20;
 
-#[derive(Debug, Serialize, Deserialize)]
+#[derive(Debug, Serialize, Deserialize, tapi::Tapi)]
 pub enum SearchResult {
     Websites(WebsitesResult),
     Bang(Box<BangHit>),
 }
 
-#[derive(Debug, Serialize, Deserialize, ToSchema)]
+#[derive(Debug, Serialize, Deserialize, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct WebsitesResult {
     pub webpages: Vec<DisplayedWebpage>,

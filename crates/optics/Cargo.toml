@@ -11,6 +11,7 @@ once_cell = { workspace = true }
 itertools = { workspace = true }
 logos = { workspace = true }
 serde = { workspace = true }
+tapi = { workspace = true }
 utoipa = { workspace = true }
 
 [build-dependencies]

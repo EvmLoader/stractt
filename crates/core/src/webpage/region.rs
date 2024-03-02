@@ -23,7 +23,9 @@ use crate::{Error, Result};
 
 use super::Webpage;
 
-#[derive(Debug, PartialEq, Eq, Clone, Copy, Hash, Serialize, Deserialize, Default, ToSchema)]
+#[derive(
+    Debug, PartialEq, Eq, Clone, Copy, Hash, Serialize, Deserialize, Default, ToSchema, tapi::Tapi,
+)]
 pub enum Region {
     #[default]
     All,

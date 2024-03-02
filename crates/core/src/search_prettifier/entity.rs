@@ -24,7 +24,7 @@ use crate::entity_index::{
     EntityMatch,
 };
 
-#[derive(Debug, Serialize, Deserialize, Clone, ToSchema)]
+#[derive(Debug, Serialize, Deserialize, Clone, ToSchema, tapi::Tapi)]
 #[serde(rename_all = "camelCase")]
 pub struct DisplayedEntity {
     pub title: String,
