@@ -17,7 +17,7 @@
 use std::ops::Range;
 
 use crate::config::SnippetConfig;
-use crate::highlighted::{HighlightedFragment, HighlightedKind};
+use crate::highlighted::{Highlighted, HighlightedFragment, HighlightedKind};
 use crate::query::Query;
 use crate::tokenizer::fields::{
     BigramTokenizer, DefaultTokenizer, FieldTokenizer, Stemmed, TrigramTokenizer,
@@ -63,16 +63,16 @@ struct PassageCandidate {
 )]
 #[serde(rename_all = "camelCase")]
 pub struct TextSnippet {
-    pub fragments: Vec<HighlightedFragment>,
+    fragments: Highlighted,
 }
 
 impl TextSnippet {
     pub fn unhighlighted_string(&self) -> String {
-        self.fragments
-            .iter()
-            .map(|f| f.text.clone())
-            .collect::<Vec<_>>()
-            .join("")
+        self.fragments.text.clone()
+    }
+
+    pub fn new(fragments: Highlighted) -> Self {
+        Self { fragments }
     }
 }
 
@@ -107,7 +107,7 @@ impl SnippetBuilder {
     }
 
     fn build(self) -> TextSnippet {
-        let mut fragments = Vec::new();
+        let mut fragments = Highlighted::default();
 
         let mut last_end = 0;
 
@@ -331,10 +331,11 @@ pub fn generate(query: &Query, text: &str, region: &Region, config: SnippetConfi
 
     if text.is_empty() {
         return TextSnippet {
-            fragments: vec![HighlightedFragment {
+            fragments: [HighlightedFragment {
                 kind: HighlightedKind::Normal,
                 text: "".to_string(),
-            }],
+            }]
+            .into(),
         };
     }
 
@@ -377,9 +378,9 @@ Survey in 2016, 2017, and 2018."#;
         let text = snippet.text;
 
         text.fragments
-            .into_iter()
+            .iter()
             .map(|HighlightedFragment { kind, text }| match kind {
-                HighlightedKind::Normal => text,
+                HighlightedKind::Normal => text.to_string(),
                 HighlightedKind::Highlighted => {
                     format!("{HIGHLIGHTEN_PREFIX}{}{HIGHLIGHTEN_POSTFIX}", text)
                 }

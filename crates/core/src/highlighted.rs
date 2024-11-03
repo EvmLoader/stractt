@@ -17,8 +17,61 @@
 use utoipa::ToSchema;
 
 #[derive(
+    Default,
     Debug,
     Clone,
+    serde::Serialize,
+    serde::Deserialize,
+    bincode::Encode,
+    bincode::Decode,
+    PartialEq,
+    ToSchema,
+)]
+#[serde(rename_all = "camelCase")]
+pub struct Highlighted {
+    pub text: String,
+    pub fragments: Vec<HighlightedFragment<(usize, usize)>>,
+}
+
+impl Highlighted {
+    pub fn push(&mut self, fragment: HighlightedFragment<String>) {
+        let start = self.text.len();
+        self.text.push_str(fragment.text());
+        let end = self.text.len();
+        self.fragments.push(HighlightedFragment {
+            kind: fragment.kind,
+            text: (start, end),
+        });
+    }
+
+    pub fn is_empty(&self) -> bool {
+        self.text.is_empty()
+    }
+
+    pub(crate) fn iter(&self) -> impl Iterator<Item = HighlightedFragment<&str>> {
+        self.fragments.iter().map(|f| HighlightedFragment {
+            kind: f.kind,
+            text: &self.text[f.text.0..f.text.1],
+        })
+    }
+}
+
+impl<const N: usize> From<[HighlightedFragment; N]> for Highlighted {
+    fn from(value: [HighlightedFragment; N]) -> Self {
+        let mut acc = Highlighted::default();
+
+        for frag in value {
+            acc.push(frag);
+        }
+
+        acc
+    }
+}
+
+#[derive(
+    Debug,
+    Clone,
+    Copy,
     serde::Serialize,
     serde::Deserialize,
     bincode::Encode,
@@ -43,30 +96,32 @@ pub enum HighlightedKind {
     ToSchema,
 )]
 #[serde(rename_all = "camelCase")]
-pub struct HighlightedFragment {
+pub struct HighlightedFragment<T = String> {
     pub kind: HighlightedKind,
-    pub text: String,
+    pub text: T,
 }
 
-impl HighlightedFragment {
-    pub fn new_unhighlighted(text: String) -> Self {
+impl<T> HighlightedFragment<T> {
+    pub fn new_unhighlighted(text: T) -> Self {
         Self::new_normal(text)
     }
 
-    pub fn new_normal(text: String) -> Self {
+    pub fn new_normal(text: T) -> Self {
         Self {
             kind: HighlightedKind::Normal,
             text,
         }
     }
 
-    pub fn new_highlighted(text: String) -> Self {
+    pub fn new_highlighted(text: T) -> Self {
         Self {
             kind: HighlightedKind::Highlighted,
             text,
         }
     }
+}
 
+impl<T: std::ops::Deref<Target = str>> HighlightedFragment<T> {
     pub fn text(&self) -> &str {
         &self.text
     }

@@ -227,9 +227,8 @@ impl InvertedIndex {
                         .join(" ")
                 };
 
-                page.snippet = TextSnippet {
-                    fragments: vec![HighlightedFragment::new_unhighlighted(snippet)],
-                };
+                page.snippet =
+                    TextSnippet::new([HighlightedFragment::new_unhighlighted(snippet)].into());
             } else {
                 let min_body_len = if url.is_homepage() {
                     self.snippet_config.min_body_length_homepage
