@@ -2,7 +2,7 @@
   <img src="git-assets/big-logo.svg" height="120" />
 </p>
 <br />
-
+<br />
 Cuely is an open source web search engine hosted at [cuely.io](https://cuely.io/) targeted towards tinkerers and developers.
 
 <br />
